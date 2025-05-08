@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser"; 
 
 import authRoutes from "./routes/auth.routes.js";
+import ProblemRoutes from "./routes/problem.routes.js";
 
 const app=express();
 dotenv.config();
@@ -16,6 +17,7 @@ app.get("/",(req,res)=>{
 })
 
 app.use("/api/v1/auth",authRoutes);
+app.use("/api/v1/problems",ProblemRoutes);
 
 
 app.listen(port,()=>{
