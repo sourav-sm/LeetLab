@@ -1,5 +1,5 @@
 import express from "express";
-import {createProblems, deleteProblemById, getAllProblems, getAllProblemsSolvedByUser, getProblemsById, updateProblem} from "../controllers/problem.controller.js";
+import {createProblems, deleteProblemById, getAllProblems, getAllProblemsSolvedByUser, getProblemById, updateProblem} from "../controllers/problem.controller.js";
 import { checkAdmin,authMiddleware } from "../middlewares/auth.middleware.js";
 
 
@@ -9,7 +9,7 @@ ProblemRoutes.post("/create-problems",authMiddleware,checkAdmin,createProblems);
 
 ProblemRoutes.get("/get-all-problems",authMiddleware,getAllProblems);
 
-ProblemRoutes.get("/get-problems/:id",authMiddleware,getProblemsById);
+ProblemRoutes.get("/get-problems/:id",authMiddleware,getProblemById);
 
 ProblemRoutes.put('/update-problem/:id',authMiddleware,checkAdmin,updateProblem);
 
