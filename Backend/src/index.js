@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 
 import authRoutes from "./routes/auth.routes.js";
 import ProblemRoutes from "./routes/problem.routes.js";
+import executionRoute from "./routes/execteCode.Route.js";
 
 const app=express();
 dotenv.config();
@@ -18,6 +19,7 @@ app.get("/",(req,res)=>{
 
 app.use("/api/v1/auth",authRoutes);
 app.use("/api/v1/problems",ProblemRoutes);
+app.use("/api/v1/excute-code",executionRoute);
 
 
 app.listen(port,()=>{
