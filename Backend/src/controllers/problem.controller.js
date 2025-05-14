@@ -13,7 +13,8 @@ export const createProblems=async(req,res)=>{
     try {
         for(const [language,solutionCode] of Object.entries(referenceSolution)){
             const languageId=getJudge0LanguageId(language);
-
+            console.log("language id is ",languageId)
+            console.log("language  is ",language)
             if(!languageId){
                 return res.status(400).json({error:`Language ${language} is not supported`})
             }
@@ -163,7 +164,7 @@ export const deleteProblemById=async(req,res)=>{
   } catch (error) {
     console.log(error)
     return res.status(500).json({
-        error:"Error while deleting the problems";
+        error:"Error while deleting the problems"
     })
   }
 }

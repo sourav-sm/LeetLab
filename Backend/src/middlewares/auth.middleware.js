@@ -47,7 +47,7 @@ export const authMiddleware=async(req,res,next)=>{
    }
 }   
 
-export const checkAdmin=async(req,res)=>{
+export const checkAdmin=async(req,res,next)=>{
     try{
         const userId=req.user.id;
         const user= await db.user.findUnique({
@@ -59,8 +59,8 @@ export const checkAdmin=async(req,res)=>{
             }
         })
     
-        if(!user || user.role!=ADMIN){
-            res.status(403),json({
+        if(!user || user.role!="ADMIN"){
+            return res.status(403),json({
                 message:"Access Denied - ADMIN only"
             })
         }

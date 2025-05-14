@@ -1,6 +1,6 @@
-import { pollBatchResults, submitBatch } from "../libs/judge0.lib";
+import { pollBatchResults, submitBatch } from "../libs/judge0.lib.js";
 
-export const execteCode=async (req,res){
+export const executeCode=async (req,res)=>{
     try {
         const [source_code,language_id,stdin,expected_outputs,problemId]=req.body;
 
