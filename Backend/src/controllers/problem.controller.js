@@ -145,9 +145,6 @@ export const getProblemById=async(req,res)=>{
 }
 
 export const updateProblem=async(req,res)=>{
-    //id
-    //id-->problem (condition)
-    //baaki kaam same as create
     const id=req.params.id;
 
     try{
@@ -290,5 +287,33 @@ export const deleteProblemById=async(req,res)=>{
 }
 
 export const getAllProblemsSolvedByUser=async(req,res)=>{
-   
+   try {
+    const problems=await db.findMany({
+        where:{
+            solvedBy:{
+                some:{
+                    userId:req.user.id
+                }
+            }
+        },
+        include:{
+            solvedBy:{
+                where:{
+                    userId:req.user.id
+                }
+            }
+        }
+
+    })
+        res.status(200).json({
+            success:true,
+            message:"Solved Problem fetched successfully",
+            problems
+        })
+   } catch (error) {
+    console.log(error);
+     res.status(500).json({
+        error:"failed to fetched solved problems"
+     })
+   }
 }

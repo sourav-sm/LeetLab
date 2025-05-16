@@ -38,6 +38,16 @@ export type testCaseResult = $Result.DefaultSelection<Prisma.$testCaseResultPayl
  * 
  */
 export type ProblemSolved = $Result.DefaultSelection<Prisma.$ProblemSolvedPayload>
+/**
+ * Model BookMark
+ * 
+ */
+export type BookMark = $Result.DefaultSelection<Prisma.$BookMarkPayload>
+/**
+ * Model ProblemInBookMark
+ * 
+ */
+export type ProblemInBookMark = $Result.DefaultSelection<Prisma.$ProblemInBookMarkPayload>
 
 /**
  * Enums
@@ -243,6 +253,26 @@ export class PrismaClient<
     * ```
     */
   get problemSolved(): Prisma.ProblemSolvedDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.bookMark`: Exposes CRUD operations for the **BookMark** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BookMarks
+    * const bookMarks = await prisma.bookMark.findMany()
+    * ```
+    */
+  get bookMark(): Prisma.BookMarkDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.problemInBookMark`: Exposes CRUD operations for the **ProblemInBookMark** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProblemInBookMarks
+    * const problemInBookMarks = await prisma.problemInBookMark.findMany()
+    * ```
+    */
+  get problemInBookMark(): Prisma.ProblemInBookMarkDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -687,7 +717,9 @@ export namespace Prisma {
     Problem: 'Problem',
     Submission: 'Submission',
     testCaseResult: 'testCaseResult',
-    ProblemSolved: 'ProblemSolved'
+    ProblemSolved: 'ProblemSolved',
+    BookMark: 'BookMark',
+    ProblemInBookMark: 'ProblemInBookMark'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -706,7 +738,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "problem" | "submission" | "testCaseResult" | "problemSolved"
+      modelProps: "user" | "problem" | "submission" | "testCaseResult" | "problemSolved" | "bookMark" | "problemInBookMark"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1080,6 +1112,154 @@ export namespace Prisma {
           }
         }
       }
+      BookMark: {
+        payload: Prisma.$BookMarkPayload<ExtArgs>
+        fields: Prisma.BookMarkFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BookMarkFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookMarkPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BookMarkFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookMarkPayload>
+          }
+          findFirst: {
+            args: Prisma.BookMarkFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookMarkPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BookMarkFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookMarkPayload>
+          }
+          findMany: {
+            args: Prisma.BookMarkFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookMarkPayload>[]
+          }
+          create: {
+            args: Prisma.BookMarkCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookMarkPayload>
+          }
+          createMany: {
+            args: Prisma.BookMarkCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BookMarkCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookMarkPayload>[]
+          }
+          delete: {
+            args: Prisma.BookMarkDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookMarkPayload>
+          }
+          update: {
+            args: Prisma.BookMarkUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookMarkPayload>
+          }
+          deleteMany: {
+            args: Prisma.BookMarkDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BookMarkUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BookMarkUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookMarkPayload>[]
+          }
+          upsert: {
+            args: Prisma.BookMarkUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookMarkPayload>
+          }
+          aggregate: {
+            args: Prisma.BookMarkAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBookMark>
+          }
+          groupBy: {
+            args: Prisma.BookMarkGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BookMarkGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BookMarkCountArgs<ExtArgs>
+            result: $Utils.Optional<BookMarkCountAggregateOutputType> | number
+          }
+        }
+      }
+      ProblemInBookMark: {
+        payload: Prisma.$ProblemInBookMarkPayload<ExtArgs>
+        fields: Prisma.ProblemInBookMarkFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProblemInBookMarkFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInBookMarkPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProblemInBookMarkFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInBookMarkPayload>
+          }
+          findFirst: {
+            args: Prisma.ProblemInBookMarkFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInBookMarkPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProblemInBookMarkFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInBookMarkPayload>
+          }
+          findMany: {
+            args: Prisma.ProblemInBookMarkFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInBookMarkPayload>[]
+          }
+          create: {
+            args: Prisma.ProblemInBookMarkCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInBookMarkPayload>
+          }
+          createMany: {
+            args: Prisma.ProblemInBookMarkCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProblemInBookMarkCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInBookMarkPayload>[]
+          }
+          delete: {
+            args: Prisma.ProblemInBookMarkDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInBookMarkPayload>
+          }
+          update: {
+            args: Prisma.ProblemInBookMarkUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInBookMarkPayload>
+          }
+          deleteMany: {
+            args: Prisma.ProblemInBookMarkDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProblemInBookMarkUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ProblemInBookMarkUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInBookMarkPayload>[]
+          }
+          upsert: {
+            args: Prisma.ProblemInBookMarkUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemInBookMarkPayload>
+          }
+          aggregate: {
+            args: Prisma.ProblemInBookMarkAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProblemInBookMark>
+          }
+          groupBy: {
+            args: Prisma.ProblemInBookMarkGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProblemInBookMarkGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProblemInBookMarkCountArgs<ExtArgs>
+            result: $Utils.Optional<ProblemInBookMarkCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1169,6 +1349,8 @@ export namespace Prisma {
     submission?: SubmissionOmit
     testCaseResult?: testCaseResultOmit
     problemSolved?: ProblemSolvedOmit
+    bookMark?: BookMarkOmit
+    problemInBookMark?: ProblemInBookMarkOmit
   }
 
   /* Types for Logging */
@@ -1266,12 +1448,14 @@ export namespace Prisma {
     problems: number
     submission: number
     problemSolved: number
+    bookmarks: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     problems?: boolean | UserCountOutputTypeCountProblemsArgs
     submission?: boolean | UserCountOutputTypeCountSubmissionArgs
     problemSolved?: boolean | UserCountOutputTypeCountProblemSolvedArgs
+    bookmarks?: boolean | UserCountOutputTypeCountBookmarksArgs
   }
 
   // Custom InputTypes
@@ -1306,6 +1490,13 @@ export namespace Prisma {
     where?: ProblemSolvedWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountBookmarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BookMarkWhereInput
+  }
+
 
   /**
    * Count Type ProblemCountOutputType
@@ -1314,11 +1505,13 @@ export namespace Prisma {
   export type ProblemCountOutputType = {
     submission: number
     solvedBy: number
+    bookmarks: number
   }
 
   export type ProblemCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     submission?: boolean | ProblemCountOutputTypeCountSubmissionArgs
     solvedBy?: boolean | ProblemCountOutputTypeCountSolvedByArgs
+    bookmarks?: boolean | ProblemCountOutputTypeCountBookmarksArgs
   }
 
   // Custom InputTypes
@@ -1344,6 +1537,13 @@ export namespace Prisma {
    */
   export type ProblemCountOutputTypeCountSolvedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProblemSolvedWhereInput
+  }
+
+  /**
+   * ProblemCountOutputType without action
+   */
+  export type ProblemCountOutputTypeCountBookmarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProblemInBookMarkWhereInput
   }
 
 
@@ -1375,6 +1575,37 @@ export namespace Prisma {
    */
   export type SubmissionCountOutputTypeCountTestCasesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: testCaseResultWhereInput
+  }
+
+
+  /**
+   * Count Type BookMarkCountOutputType
+   */
+
+  export type BookMarkCountOutputType = {
+    problems: number
+  }
+
+  export type BookMarkCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    problems?: boolean | BookMarkCountOutputTypeCountProblemsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BookMarkCountOutputType without action
+   */
+  export type BookMarkCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookMarkCountOutputType
+     */
+    select?: BookMarkCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BookMarkCountOutputType without action
+   */
+  export type BookMarkCountOutputTypeCountProblemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProblemInBookMarkWhereInput
   }
 
 
@@ -1573,6 +1804,7 @@ export namespace Prisma {
     problems?: boolean | User$problemsArgs<ExtArgs>
     submission?: boolean | User$submissionArgs<ExtArgs>
     problemSolved?: boolean | User$problemSolvedArgs<ExtArgs>
+    bookmarks?: boolean | User$bookmarksArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1614,6 +1846,7 @@ export namespace Prisma {
     problems?: boolean | User$problemsArgs<ExtArgs>
     submission?: boolean | User$submissionArgs<ExtArgs>
     problemSolved?: boolean | User$problemSolvedArgs<ExtArgs>
+    bookmarks?: boolean | User$bookmarksArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1625,6 +1858,7 @@ export namespace Prisma {
       problems: Prisma.$ProblemPayload<ExtArgs>[]
       submission: Prisma.$SubmissionPayload<ExtArgs>[]
       problemSolved: Prisma.$ProblemSolvedPayload<ExtArgs>[]
+      bookmarks: Prisma.$BookMarkPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2032,6 +2266,7 @@ export namespace Prisma {
     problems<T extends User$problemsArgs<ExtArgs> = {}>(args?: Subset<T, User$problemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     submission<T extends User$submissionArgs<ExtArgs> = {}>(args?: Subset<T, User$submissionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     problemSolved<T extends User$problemSolvedArgs<ExtArgs> = {}>(args?: Subset<T, User$problemSolvedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemSolvedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    bookmarks<T extends User$bookmarksArgs<ExtArgs> = {}>(args?: Subset<T, User$bookmarksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookMarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2529,6 +2764,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.bookmarks
+   */
+  export type User$bookmarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookMark
+     */
+    select?: BookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookMark
+     */
+    omit?: BookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookMarkInclude<ExtArgs> | null
+    where?: BookMarkWhereInput
+    orderBy?: BookMarkOrderByWithRelationInput | BookMarkOrderByWithRelationInput[]
+    cursor?: BookMarkWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BookMarkScalarFieldEnum | BookMarkScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2750,6 +3009,7 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
     submission?: boolean | Problem$submissionArgs<ExtArgs>
     solvedBy?: boolean | Problem$solvedByArgs<ExtArgs>
+    bookmarks?: boolean | Problem$bookmarksArgs<ExtArgs>
     _count?: boolean | ProblemCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["problem"]>
 
@@ -2805,6 +3065,7 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
     submission?: boolean | Problem$submissionArgs<ExtArgs>
     solvedBy?: boolean | Problem$solvedByArgs<ExtArgs>
+    bookmarks?: boolean | Problem$bookmarksArgs<ExtArgs>
     _count?: boolean | ProblemCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProblemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2820,6 +3081,7 @@ export namespace Prisma {
       user: Prisma.$UserPayload<ExtArgs>
       submission: Prisma.$SubmissionPayload<ExtArgs>[]
       solvedBy: Prisma.$ProblemSolvedPayload<ExtArgs>[]
+      bookmarks: Prisma.$ProblemInBookMarkPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3231,6 +3493,7 @@ export namespace Prisma {
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     submission<T extends Problem$submissionArgs<ExtArgs> = {}>(args?: Subset<T, Problem$submissionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     solvedBy<T extends Problem$solvedByArgs<ExtArgs> = {}>(args?: Subset<T, Problem$solvedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemSolvedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    bookmarks<T extends Problem$bookmarksArgs<ExtArgs> = {}>(args?: Subset<T, Problem$bookmarksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemInBookMarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3713,6 +3976,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ProblemSolvedScalarFieldEnum | ProblemSolvedScalarFieldEnum[]
+  }
+
+  /**
+   * Problem.bookmarks
+   */
+  export type Problem$bookmarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemInBookMark
+     */
+    select?: ProblemInBookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemInBookMark
+     */
+    omit?: ProblemInBookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemInBookMarkInclude<ExtArgs> | null
+    where?: ProblemInBookMarkWhereInput
+    orderBy?: ProblemInBookMarkOrderByWithRelationInput | ProblemInBookMarkOrderByWithRelationInput[]
+    cursor?: ProblemInBookMarkWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProblemInBookMarkScalarFieldEnum | ProblemInBookMarkScalarFieldEnum[]
   }
 
   /**
@@ -7193,6 +7480,2173 @@ export namespace Prisma {
 
 
   /**
+   * Model BookMark
+   */
+
+  export type AggregateBookMark = {
+    _count: BookMarkCountAggregateOutputType | null
+    _min: BookMarkMinAggregateOutputType | null
+    _max: BookMarkMaxAggregateOutputType | null
+  }
+
+  export type BookMarkMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    userId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BookMarkMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    userId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BookMarkCountAggregateOutputType = {
+    id: number
+    name: number
+    description: number
+    userId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BookMarkMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BookMarkMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BookMarkCountAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BookMarkAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BookMark to aggregate.
+     */
+    where?: BookMarkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BookMarks to fetch.
+     */
+    orderBy?: BookMarkOrderByWithRelationInput | BookMarkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BookMarkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BookMarks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BookMarks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BookMarks
+    **/
+    _count?: true | BookMarkCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BookMarkMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BookMarkMaxAggregateInputType
+  }
+
+  export type GetBookMarkAggregateType<T extends BookMarkAggregateArgs> = {
+        [P in keyof T & keyof AggregateBookMark]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBookMark[P]>
+      : GetScalarType<T[P], AggregateBookMark[P]>
+  }
+
+
+
+
+  export type BookMarkGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BookMarkWhereInput
+    orderBy?: BookMarkOrderByWithAggregationInput | BookMarkOrderByWithAggregationInput[]
+    by: BookMarkScalarFieldEnum[] | BookMarkScalarFieldEnum
+    having?: BookMarkScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BookMarkCountAggregateInputType | true
+    _min?: BookMarkMinAggregateInputType
+    _max?: BookMarkMaxAggregateInputType
+  }
+
+  export type BookMarkGroupByOutputType = {
+    id: string
+    name: string
+    description: string
+    userId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: BookMarkCountAggregateOutputType | null
+    _min: BookMarkMinAggregateOutputType | null
+    _max: BookMarkMaxAggregateOutputType | null
+  }
+
+  type GetBookMarkGroupByPayload<T extends BookMarkGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BookMarkGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BookMarkGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BookMarkGroupByOutputType[P]>
+            : GetScalarType<T[P], BookMarkGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BookMarkSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    problems?: boolean | BookMark$problemsArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    _count?: boolean | BookMarkCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["bookMark"]>
+
+  export type BookMarkSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["bookMark"]>
+
+  export type BookMarkSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["bookMark"]>
+
+  export type BookMarkSelectScalar = {
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BookMarkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["bookMark"]>
+  export type BookMarkInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    problems?: boolean | BookMark$problemsArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    _count?: boolean | BookMarkCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type BookMarkIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type BookMarkIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $BookMarkPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BookMark"
+    objects: {
+      problems: Prisma.$ProblemInBookMarkPayload<ExtArgs>[]
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      description: string
+      userId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["bookMark"]>
+    composites: {}
+  }
+
+  type BookMarkGetPayload<S extends boolean | null | undefined | BookMarkDefaultArgs> = $Result.GetResult<Prisma.$BookMarkPayload, S>
+
+  type BookMarkCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BookMarkFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BookMarkCountAggregateInputType | true
+    }
+
+  export interface BookMarkDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BookMark'], meta: { name: 'BookMark' } }
+    /**
+     * Find zero or one BookMark that matches the filter.
+     * @param {BookMarkFindUniqueArgs} args - Arguments to find a BookMark
+     * @example
+     * // Get one BookMark
+     * const bookMark = await prisma.bookMark.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BookMarkFindUniqueArgs>(args: SelectSubset<T, BookMarkFindUniqueArgs<ExtArgs>>): Prisma__BookMarkClient<$Result.GetResult<Prisma.$BookMarkPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BookMark that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BookMarkFindUniqueOrThrowArgs} args - Arguments to find a BookMark
+     * @example
+     * // Get one BookMark
+     * const bookMark = await prisma.bookMark.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BookMarkFindUniqueOrThrowArgs>(args: SelectSubset<T, BookMarkFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BookMarkClient<$Result.GetResult<Prisma.$BookMarkPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BookMark that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookMarkFindFirstArgs} args - Arguments to find a BookMark
+     * @example
+     * // Get one BookMark
+     * const bookMark = await prisma.bookMark.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BookMarkFindFirstArgs>(args?: SelectSubset<T, BookMarkFindFirstArgs<ExtArgs>>): Prisma__BookMarkClient<$Result.GetResult<Prisma.$BookMarkPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BookMark that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookMarkFindFirstOrThrowArgs} args - Arguments to find a BookMark
+     * @example
+     * // Get one BookMark
+     * const bookMark = await prisma.bookMark.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BookMarkFindFirstOrThrowArgs>(args?: SelectSubset<T, BookMarkFindFirstOrThrowArgs<ExtArgs>>): Prisma__BookMarkClient<$Result.GetResult<Prisma.$BookMarkPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BookMarks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookMarkFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BookMarks
+     * const bookMarks = await prisma.bookMark.findMany()
+     * 
+     * // Get first 10 BookMarks
+     * const bookMarks = await prisma.bookMark.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const bookMarkWithIdOnly = await prisma.bookMark.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BookMarkFindManyArgs>(args?: SelectSubset<T, BookMarkFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookMarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BookMark.
+     * @param {BookMarkCreateArgs} args - Arguments to create a BookMark.
+     * @example
+     * // Create one BookMark
+     * const BookMark = await prisma.bookMark.create({
+     *   data: {
+     *     // ... data to create a BookMark
+     *   }
+     * })
+     * 
+     */
+    create<T extends BookMarkCreateArgs>(args: SelectSubset<T, BookMarkCreateArgs<ExtArgs>>): Prisma__BookMarkClient<$Result.GetResult<Prisma.$BookMarkPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BookMarks.
+     * @param {BookMarkCreateManyArgs} args - Arguments to create many BookMarks.
+     * @example
+     * // Create many BookMarks
+     * const bookMark = await prisma.bookMark.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BookMarkCreateManyArgs>(args?: SelectSubset<T, BookMarkCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BookMarks and returns the data saved in the database.
+     * @param {BookMarkCreateManyAndReturnArgs} args - Arguments to create many BookMarks.
+     * @example
+     * // Create many BookMarks
+     * const bookMark = await prisma.bookMark.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BookMarks and only return the `id`
+     * const bookMarkWithIdOnly = await prisma.bookMark.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BookMarkCreateManyAndReturnArgs>(args?: SelectSubset<T, BookMarkCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookMarkPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BookMark.
+     * @param {BookMarkDeleteArgs} args - Arguments to delete one BookMark.
+     * @example
+     * // Delete one BookMark
+     * const BookMark = await prisma.bookMark.delete({
+     *   where: {
+     *     // ... filter to delete one BookMark
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BookMarkDeleteArgs>(args: SelectSubset<T, BookMarkDeleteArgs<ExtArgs>>): Prisma__BookMarkClient<$Result.GetResult<Prisma.$BookMarkPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BookMark.
+     * @param {BookMarkUpdateArgs} args - Arguments to update one BookMark.
+     * @example
+     * // Update one BookMark
+     * const bookMark = await prisma.bookMark.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BookMarkUpdateArgs>(args: SelectSubset<T, BookMarkUpdateArgs<ExtArgs>>): Prisma__BookMarkClient<$Result.GetResult<Prisma.$BookMarkPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BookMarks.
+     * @param {BookMarkDeleteManyArgs} args - Arguments to filter BookMarks to delete.
+     * @example
+     * // Delete a few BookMarks
+     * const { count } = await prisma.bookMark.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BookMarkDeleteManyArgs>(args?: SelectSubset<T, BookMarkDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BookMarks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookMarkUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BookMarks
+     * const bookMark = await prisma.bookMark.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BookMarkUpdateManyArgs>(args: SelectSubset<T, BookMarkUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BookMarks and returns the data updated in the database.
+     * @param {BookMarkUpdateManyAndReturnArgs} args - Arguments to update many BookMarks.
+     * @example
+     * // Update many BookMarks
+     * const bookMark = await prisma.bookMark.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BookMarks and only return the `id`
+     * const bookMarkWithIdOnly = await prisma.bookMark.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BookMarkUpdateManyAndReturnArgs>(args: SelectSubset<T, BookMarkUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookMarkPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BookMark.
+     * @param {BookMarkUpsertArgs} args - Arguments to update or create a BookMark.
+     * @example
+     * // Update or create a BookMark
+     * const bookMark = await prisma.bookMark.upsert({
+     *   create: {
+     *     // ... data to create a BookMark
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BookMark we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BookMarkUpsertArgs>(args: SelectSubset<T, BookMarkUpsertArgs<ExtArgs>>): Prisma__BookMarkClient<$Result.GetResult<Prisma.$BookMarkPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BookMarks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookMarkCountArgs} args - Arguments to filter BookMarks to count.
+     * @example
+     * // Count the number of BookMarks
+     * const count = await prisma.bookMark.count({
+     *   where: {
+     *     // ... the filter for the BookMarks we want to count
+     *   }
+     * })
+    **/
+    count<T extends BookMarkCountArgs>(
+      args?: Subset<T, BookMarkCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BookMarkCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BookMark.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookMarkAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BookMarkAggregateArgs>(args: Subset<T, BookMarkAggregateArgs>): Prisma.PrismaPromise<GetBookMarkAggregateType<T>>
+
+    /**
+     * Group by BookMark.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookMarkGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BookMarkGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BookMarkGroupByArgs['orderBy'] }
+        : { orderBy?: BookMarkGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BookMarkGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBookMarkGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BookMark model
+   */
+  readonly fields: BookMarkFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BookMark.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BookMarkClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    problems<T extends BookMark$problemsArgs<ExtArgs> = {}>(args?: Subset<T, BookMark$problemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemInBookMarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BookMark model
+   */
+  interface BookMarkFieldRefs {
+    readonly id: FieldRef<"BookMark", 'String'>
+    readonly name: FieldRef<"BookMark", 'String'>
+    readonly description: FieldRef<"BookMark", 'String'>
+    readonly userId: FieldRef<"BookMark", 'String'>
+    readonly createdAt: FieldRef<"BookMark", 'DateTime'>
+    readonly updatedAt: FieldRef<"BookMark", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BookMark findUnique
+   */
+  export type BookMarkFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookMark
+     */
+    select?: BookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookMark
+     */
+    omit?: BookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookMarkInclude<ExtArgs> | null
+    /**
+     * Filter, which BookMark to fetch.
+     */
+    where: BookMarkWhereUniqueInput
+  }
+
+  /**
+   * BookMark findUniqueOrThrow
+   */
+  export type BookMarkFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookMark
+     */
+    select?: BookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookMark
+     */
+    omit?: BookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookMarkInclude<ExtArgs> | null
+    /**
+     * Filter, which BookMark to fetch.
+     */
+    where: BookMarkWhereUniqueInput
+  }
+
+  /**
+   * BookMark findFirst
+   */
+  export type BookMarkFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookMark
+     */
+    select?: BookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookMark
+     */
+    omit?: BookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookMarkInclude<ExtArgs> | null
+    /**
+     * Filter, which BookMark to fetch.
+     */
+    where?: BookMarkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BookMarks to fetch.
+     */
+    orderBy?: BookMarkOrderByWithRelationInput | BookMarkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BookMarks.
+     */
+    cursor?: BookMarkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BookMarks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BookMarks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BookMarks.
+     */
+    distinct?: BookMarkScalarFieldEnum | BookMarkScalarFieldEnum[]
+  }
+
+  /**
+   * BookMark findFirstOrThrow
+   */
+  export type BookMarkFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookMark
+     */
+    select?: BookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookMark
+     */
+    omit?: BookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookMarkInclude<ExtArgs> | null
+    /**
+     * Filter, which BookMark to fetch.
+     */
+    where?: BookMarkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BookMarks to fetch.
+     */
+    orderBy?: BookMarkOrderByWithRelationInput | BookMarkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BookMarks.
+     */
+    cursor?: BookMarkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BookMarks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BookMarks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BookMarks.
+     */
+    distinct?: BookMarkScalarFieldEnum | BookMarkScalarFieldEnum[]
+  }
+
+  /**
+   * BookMark findMany
+   */
+  export type BookMarkFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookMark
+     */
+    select?: BookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookMark
+     */
+    omit?: BookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookMarkInclude<ExtArgs> | null
+    /**
+     * Filter, which BookMarks to fetch.
+     */
+    where?: BookMarkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BookMarks to fetch.
+     */
+    orderBy?: BookMarkOrderByWithRelationInput | BookMarkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BookMarks.
+     */
+    cursor?: BookMarkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BookMarks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BookMarks.
+     */
+    skip?: number
+    distinct?: BookMarkScalarFieldEnum | BookMarkScalarFieldEnum[]
+  }
+
+  /**
+   * BookMark create
+   */
+  export type BookMarkCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookMark
+     */
+    select?: BookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookMark
+     */
+    omit?: BookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookMarkInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BookMark.
+     */
+    data: XOR<BookMarkCreateInput, BookMarkUncheckedCreateInput>
+  }
+
+  /**
+   * BookMark createMany
+   */
+  export type BookMarkCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BookMarks.
+     */
+    data: BookMarkCreateManyInput | BookMarkCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BookMark createManyAndReturn
+   */
+  export type BookMarkCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookMark
+     */
+    select?: BookMarkSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookMark
+     */
+    omit?: BookMarkOmit<ExtArgs> | null
+    /**
+     * The data used to create many BookMarks.
+     */
+    data: BookMarkCreateManyInput | BookMarkCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookMarkIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BookMark update
+   */
+  export type BookMarkUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookMark
+     */
+    select?: BookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookMark
+     */
+    omit?: BookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookMarkInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BookMark.
+     */
+    data: XOR<BookMarkUpdateInput, BookMarkUncheckedUpdateInput>
+    /**
+     * Choose, which BookMark to update.
+     */
+    where: BookMarkWhereUniqueInput
+  }
+
+  /**
+   * BookMark updateMany
+   */
+  export type BookMarkUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BookMarks.
+     */
+    data: XOR<BookMarkUpdateManyMutationInput, BookMarkUncheckedUpdateManyInput>
+    /**
+     * Filter which BookMarks to update
+     */
+    where?: BookMarkWhereInput
+    /**
+     * Limit how many BookMarks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BookMark updateManyAndReturn
+   */
+  export type BookMarkUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookMark
+     */
+    select?: BookMarkSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookMark
+     */
+    omit?: BookMarkOmit<ExtArgs> | null
+    /**
+     * The data used to update BookMarks.
+     */
+    data: XOR<BookMarkUpdateManyMutationInput, BookMarkUncheckedUpdateManyInput>
+    /**
+     * Filter which BookMarks to update
+     */
+    where?: BookMarkWhereInput
+    /**
+     * Limit how many BookMarks to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookMarkIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BookMark upsert
+   */
+  export type BookMarkUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookMark
+     */
+    select?: BookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookMark
+     */
+    omit?: BookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookMarkInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BookMark to update in case it exists.
+     */
+    where: BookMarkWhereUniqueInput
+    /**
+     * In case the BookMark found by the `where` argument doesn't exist, create a new BookMark with this data.
+     */
+    create: XOR<BookMarkCreateInput, BookMarkUncheckedCreateInput>
+    /**
+     * In case the BookMark was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BookMarkUpdateInput, BookMarkUncheckedUpdateInput>
+  }
+
+  /**
+   * BookMark delete
+   */
+  export type BookMarkDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookMark
+     */
+    select?: BookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookMark
+     */
+    omit?: BookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookMarkInclude<ExtArgs> | null
+    /**
+     * Filter which BookMark to delete.
+     */
+    where: BookMarkWhereUniqueInput
+  }
+
+  /**
+   * BookMark deleteMany
+   */
+  export type BookMarkDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BookMarks to delete
+     */
+    where?: BookMarkWhereInput
+    /**
+     * Limit how many BookMarks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BookMark.problems
+   */
+  export type BookMark$problemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemInBookMark
+     */
+    select?: ProblemInBookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemInBookMark
+     */
+    omit?: ProblemInBookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemInBookMarkInclude<ExtArgs> | null
+    where?: ProblemInBookMarkWhereInput
+    orderBy?: ProblemInBookMarkOrderByWithRelationInput | ProblemInBookMarkOrderByWithRelationInput[]
+    cursor?: ProblemInBookMarkWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProblemInBookMarkScalarFieldEnum | ProblemInBookMarkScalarFieldEnum[]
+  }
+
+  /**
+   * BookMark without action
+   */
+  export type BookMarkDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookMark
+     */
+    select?: BookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookMark
+     */
+    omit?: BookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookMarkInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ProblemInBookMark
+   */
+
+  export type AggregateProblemInBookMark = {
+    _count: ProblemInBookMarkCountAggregateOutputType | null
+    _min: ProblemInBookMarkMinAggregateOutputType | null
+    _max: ProblemInBookMarkMaxAggregateOutputType | null
+  }
+
+  export type ProblemInBookMarkMinAggregateOutputType = {
+    id: string | null
+    BookMarkId: string | null
+    problemId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProblemInBookMarkMaxAggregateOutputType = {
+    id: string | null
+    BookMarkId: string | null
+    problemId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProblemInBookMarkCountAggregateOutputType = {
+    id: number
+    BookMarkId: number
+    problemId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ProblemInBookMarkMinAggregateInputType = {
+    id?: true
+    BookMarkId?: true
+    problemId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProblemInBookMarkMaxAggregateInputType = {
+    id?: true
+    BookMarkId?: true
+    problemId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProblemInBookMarkCountAggregateInputType = {
+    id?: true
+    BookMarkId?: true
+    problemId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ProblemInBookMarkAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProblemInBookMark to aggregate.
+     */
+    where?: ProblemInBookMarkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProblemInBookMarks to fetch.
+     */
+    orderBy?: ProblemInBookMarkOrderByWithRelationInput | ProblemInBookMarkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProblemInBookMarkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProblemInBookMarks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProblemInBookMarks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProblemInBookMarks
+    **/
+    _count?: true | ProblemInBookMarkCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProblemInBookMarkMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProblemInBookMarkMaxAggregateInputType
+  }
+
+  export type GetProblemInBookMarkAggregateType<T extends ProblemInBookMarkAggregateArgs> = {
+        [P in keyof T & keyof AggregateProblemInBookMark]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProblemInBookMark[P]>
+      : GetScalarType<T[P], AggregateProblemInBookMark[P]>
+  }
+
+
+
+
+  export type ProblemInBookMarkGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProblemInBookMarkWhereInput
+    orderBy?: ProblemInBookMarkOrderByWithAggregationInput | ProblemInBookMarkOrderByWithAggregationInput[]
+    by: ProblemInBookMarkScalarFieldEnum[] | ProblemInBookMarkScalarFieldEnum
+    having?: ProblemInBookMarkScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProblemInBookMarkCountAggregateInputType | true
+    _min?: ProblemInBookMarkMinAggregateInputType
+    _max?: ProblemInBookMarkMaxAggregateInputType
+  }
+
+  export type ProblemInBookMarkGroupByOutputType = {
+    id: string
+    BookMarkId: string
+    problemId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: ProblemInBookMarkCountAggregateOutputType | null
+    _min: ProblemInBookMarkMinAggregateOutputType | null
+    _max: ProblemInBookMarkMaxAggregateOutputType | null
+  }
+
+  type GetProblemInBookMarkGroupByPayload<T extends ProblemInBookMarkGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProblemInBookMarkGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProblemInBookMarkGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProblemInBookMarkGroupByOutputType[P]>
+            : GetScalarType<T[P], ProblemInBookMarkGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProblemInBookMarkSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    BookMarkId?: boolean
+    problemId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    bookMark?: boolean | BookMarkDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["problemInBookMark"]>
+
+  export type ProblemInBookMarkSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    BookMarkId?: boolean
+    problemId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    bookMark?: boolean | BookMarkDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["problemInBookMark"]>
+
+  export type ProblemInBookMarkSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    BookMarkId?: boolean
+    problemId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    bookMark?: boolean | BookMarkDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["problemInBookMark"]>
+
+  export type ProblemInBookMarkSelectScalar = {
+    id?: boolean
+    BookMarkId?: boolean
+    problemId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ProblemInBookMarkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "BookMarkId" | "problemId" | "createdAt" | "updatedAt", ExtArgs["result"]["problemInBookMark"]>
+  export type ProblemInBookMarkInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bookMark?: boolean | BookMarkDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }
+  export type ProblemInBookMarkIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bookMark?: boolean | BookMarkDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }
+  export type ProblemInBookMarkIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bookMark?: boolean | BookMarkDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }
+
+  export type $ProblemInBookMarkPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProblemInBookMark"
+    objects: {
+      bookMark: Prisma.$BookMarkPayload<ExtArgs>
+      problem: Prisma.$ProblemPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      BookMarkId: string
+      problemId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["problemInBookMark"]>
+    composites: {}
+  }
+
+  type ProblemInBookMarkGetPayload<S extends boolean | null | undefined | ProblemInBookMarkDefaultArgs> = $Result.GetResult<Prisma.$ProblemInBookMarkPayload, S>
+
+  type ProblemInBookMarkCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProblemInBookMarkFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProblemInBookMarkCountAggregateInputType | true
+    }
+
+  export interface ProblemInBookMarkDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProblemInBookMark'], meta: { name: 'ProblemInBookMark' } }
+    /**
+     * Find zero or one ProblemInBookMark that matches the filter.
+     * @param {ProblemInBookMarkFindUniqueArgs} args - Arguments to find a ProblemInBookMark
+     * @example
+     * // Get one ProblemInBookMark
+     * const problemInBookMark = await prisma.problemInBookMark.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProblemInBookMarkFindUniqueArgs>(args: SelectSubset<T, ProblemInBookMarkFindUniqueArgs<ExtArgs>>): Prisma__ProblemInBookMarkClient<$Result.GetResult<Prisma.$ProblemInBookMarkPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ProblemInBookMark that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProblemInBookMarkFindUniqueOrThrowArgs} args - Arguments to find a ProblemInBookMark
+     * @example
+     * // Get one ProblemInBookMark
+     * const problemInBookMark = await prisma.problemInBookMark.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProblemInBookMarkFindUniqueOrThrowArgs>(args: SelectSubset<T, ProblemInBookMarkFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProblemInBookMarkClient<$Result.GetResult<Prisma.$ProblemInBookMarkPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProblemInBookMark that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemInBookMarkFindFirstArgs} args - Arguments to find a ProblemInBookMark
+     * @example
+     * // Get one ProblemInBookMark
+     * const problemInBookMark = await prisma.problemInBookMark.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProblemInBookMarkFindFirstArgs>(args?: SelectSubset<T, ProblemInBookMarkFindFirstArgs<ExtArgs>>): Prisma__ProblemInBookMarkClient<$Result.GetResult<Prisma.$ProblemInBookMarkPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProblemInBookMark that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemInBookMarkFindFirstOrThrowArgs} args - Arguments to find a ProblemInBookMark
+     * @example
+     * // Get one ProblemInBookMark
+     * const problemInBookMark = await prisma.problemInBookMark.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProblemInBookMarkFindFirstOrThrowArgs>(args?: SelectSubset<T, ProblemInBookMarkFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProblemInBookMarkClient<$Result.GetResult<Prisma.$ProblemInBookMarkPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ProblemInBookMarks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemInBookMarkFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProblemInBookMarks
+     * const problemInBookMarks = await prisma.problemInBookMark.findMany()
+     * 
+     * // Get first 10 ProblemInBookMarks
+     * const problemInBookMarks = await prisma.problemInBookMark.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const problemInBookMarkWithIdOnly = await prisma.problemInBookMark.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProblemInBookMarkFindManyArgs>(args?: SelectSubset<T, ProblemInBookMarkFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemInBookMarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ProblemInBookMark.
+     * @param {ProblemInBookMarkCreateArgs} args - Arguments to create a ProblemInBookMark.
+     * @example
+     * // Create one ProblemInBookMark
+     * const ProblemInBookMark = await prisma.problemInBookMark.create({
+     *   data: {
+     *     // ... data to create a ProblemInBookMark
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProblemInBookMarkCreateArgs>(args: SelectSubset<T, ProblemInBookMarkCreateArgs<ExtArgs>>): Prisma__ProblemInBookMarkClient<$Result.GetResult<Prisma.$ProblemInBookMarkPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ProblemInBookMarks.
+     * @param {ProblemInBookMarkCreateManyArgs} args - Arguments to create many ProblemInBookMarks.
+     * @example
+     * // Create many ProblemInBookMarks
+     * const problemInBookMark = await prisma.problemInBookMark.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProblemInBookMarkCreateManyArgs>(args?: SelectSubset<T, ProblemInBookMarkCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ProblemInBookMarks and returns the data saved in the database.
+     * @param {ProblemInBookMarkCreateManyAndReturnArgs} args - Arguments to create many ProblemInBookMarks.
+     * @example
+     * // Create many ProblemInBookMarks
+     * const problemInBookMark = await prisma.problemInBookMark.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ProblemInBookMarks and only return the `id`
+     * const problemInBookMarkWithIdOnly = await prisma.problemInBookMark.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProblemInBookMarkCreateManyAndReturnArgs>(args?: SelectSubset<T, ProblemInBookMarkCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemInBookMarkPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ProblemInBookMark.
+     * @param {ProblemInBookMarkDeleteArgs} args - Arguments to delete one ProblemInBookMark.
+     * @example
+     * // Delete one ProblemInBookMark
+     * const ProblemInBookMark = await prisma.problemInBookMark.delete({
+     *   where: {
+     *     // ... filter to delete one ProblemInBookMark
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProblemInBookMarkDeleteArgs>(args: SelectSubset<T, ProblemInBookMarkDeleteArgs<ExtArgs>>): Prisma__ProblemInBookMarkClient<$Result.GetResult<Prisma.$ProblemInBookMarkPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ProblemInBookMark.
+     * @param {ProblemInBookMarkUpdateArgs} args - Arguments to update one ProblemInBookMark.
+     * @example
+     * // Update one ProblemInBookMark
+     * const problemInBookMark = await prisma.problemInBookMark.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProblemInBookMarkUpdateArgs>(args: SelectSubset<T, ProblemInBookMarkUpdateArgs<ExtArgs>>): Prisma__ProblemInBookMarkClient<$Result.GetResult<Prisma.$ProblemInBookMarkPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ProblemInBookMarks.
+     * @param {ProblemInBookMarkDeleteManyArgs} args - Arguments to filter ProblemInBookMarks to delete.
+     * @example
+     * // Delete a few ProblemInBookMarks
+     * const { count } = await prisma.problemInBookMark.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProblemInBookMarkDeleteManyArgs>(args?: SelectSubset<T, ProblemInBookMarkDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProblemInBookMarks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemInBookMarkUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProblemInBookMarks
+     * const problemInBookMark = await prisma.problemInBookMark.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProblemInBookMarkUpdateManyArgs>(args: SelectSubset<T, ProblemInBookMarkUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProblemInBookMarks and returns the data updated in the database.
+     * @param {ProblemInBookMarkUpdateManyAndReturnArgs} args - Arguments to update many ProblemInBookMarks.
+     * @example
+     * // Update many ProblemInBookMarks
+     * const problemInBookMark = await prisma.problemInBookMark.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ProblemInBookMarks and only return the `id`
+     * const problemInBookMarkWithIdOnly = await prisma.problemInBookMark.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ProblemInBookMarkUpdateManyAndReturnArgs>(args: SelectSubset<T, ProblemInBookMarkUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemInBookMarkPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ProblemInBookMark.
+     * @param {ProblemInBookMarkUpsertArgs} args - Arguments to update or create a ProblemInBookMark.
+     * @example
+     * // Update or create a ProblemInBookMark
+     * const problemInBookMark = await prisma.problemInBookMark.upsert({
+     *   create: {
+     *     // ... data to create a ProblemInBookMark
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProblemInBookMark we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProblemInBookMarkUpsertArgs>(args: SelectSubset<T, ProblemInBookMarkUpsertArgs<ExtArgs>>): Prisma__ProblemInBookMarkClient<$Result.GetResult<Prisma.$ProblemInBookMarkPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ProblemInBookMarks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemInBookMarkCountArgs} args - Arguments to filter ProblemInBookMarks to count.
+     * @example
+     * // Count the number of ProblemInBookMarks
+     * const count = await prisma.problemInBookMark.count({
+     *   where: {
+     *     // ... the filter for the ProblemInBookMarks we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProblemInBookMarkCountArgs>(
+      args?: Subset<T, ProblemInBookMarkCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProblemInBookMarkCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProblemInBookMark.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemInBookMarkAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProblemInBookMarkAggregateArgs>(args: Subset<T, ProblemInBookMarkAggregateArgs>): Prisma.PrismaPromise<GetProblemInBookMarkAggregateType<T>>
+
+    /**
+     * Group by ProblemInBookMark.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemInBookMarkGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProblemInBookMarkGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProblemInBookMarkGroupByArgs['orderBy'] }
+        : { orderBy?: ProblemInBookMarkGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProblemInBookMarkGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProblemInBookMarkGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProblemInBookMark model
+   */
+  readonly fields: ProblemInBookMarkFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProblemInBookMark.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProblemInBookMarkClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    bookMark<T extends BookMarkDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BookMarkDefaultArgs<ExtArgs>>): Prisma__BookMarkClient<$Result.GetResult<Prisma.$BookMarkPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    problem<T extends ProblemDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProblemDefaultArgs<ExtArgs>>): Prisma__ProblemClient<$Result.GetResult<Prisma.$ProblemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ProblemInBookMark model
+   */
+  interface ProblemInBookMarkFieldRefs {
+    readonly id: FieldRef<"ProblemInBookMark", 'String'>
+    readonly BookMarkId: FieldRef<"ProblemInBookMark", 'String'>
+    readonly problemId: FieldRef<"ProblemInBookMark", 'String'>
+    readonly createdAt: FieldRef<"ProblemInBookMark", 'DateTime'>
+    readonly updatedAt: FieldRef<"ProblemInBookMark", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ProblemInBookMark findUnique
+   */
+  export type ProblemInBookMarkFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemInBookMark
+     */
+    select?: ProblemInBookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemInBookMark
+     */
+    omit?: ProblemInBookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemInBookMarkInclude<ExtArgs> | null
+    /**
+     * Filter, which ProblemInBookMark to fetch.
+     */
+    where: ProblemInBookMarkWhereUniqueInput
+  }
+
+  /**
+   * ProblemInBookMark findUniqueOrThrow
+   */
+  export type ProblemInBookMarkFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemInBookMark
+     */
+    select?: ProblemInBookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemInBookMark
+     */
+    omit?: ProblemInBookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemInBookMarkInclude<ExtArgs> | null
+    /**
+     * Filter, which ProblemInBookMark to fetch.
+     */
+    where: ProblemInBookMarkWhereUniqueInput
+  }
+
+  /**
+   * ProblemInBookMark findFirst
+   */
+  export type ProblemInBookMarkFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemInBookMark
+     */
+    select?: ProblemInBookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemInBookMark
+     */
+    omit?: ProblemInBookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemInBookMarkInclude<ExtArgs> | null
+    /**
+     * Filter, which ProblemInBookMark to fetch.
+     */
+    where?: ProblemInBookMarkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProblemInBookMarks to fetch.
+     */
+    orderBy?: ProblemInBookMarkOrderByWithRelationInput | ProblemInBookMarkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProblemInBookMarks.
+     */
+    cursor?: ProblemInBookMarkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProblemInBookMarks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProblemInBookMarks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProblemInBookMarks.
+     */
+    distinct?: ProblemInBookMarkScalarFieldEnum | ProblemInBookMarkScalarFieldEnum[]
+  }
+
+  /**
+   * ProblemInBookMark findFirstOrThrow
+   */
+  export type ProblemInBookMarkFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemInBookMark
+     */
+    select?: ProblemInBookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemInBookMark
+     */
+    omit?: ProblemInBookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemInBookMarkInclude<ExtArgs> | null
+    /**
+     * Filter, which ProblemInBookMark to fetch.
+     */
+    where?: ProblemInBookMarkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProblemInBookMarks to fetch.
+     */
+    orderBy?: ProblemInBookMarkOrderByWithRelationInput | ProblemInBookMarkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProblemInBookMarks.
+     */
+    cursor?: ProblemInBookMarkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProblemInBookMarks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProblemInBookMarks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProblemInBookMarks.
+     */
+    distinct?: ProblemInBookMarkScalarFieldEnum | ProblemInBookMarkScalarFieldEnum[]
+  }
+
+  /**
+   * ProblemInBookMark findMany
+   */
+  export type ProblemInBookMarkFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemInBookMark
+     */
+    select?: ProblemInBookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemInBookMark
+     */
+    omit?: ProblemInBookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemInBookMarkInclude<ExtArgs> | null
+    /**
+     * Filter, which ProblemInBookMarks to fetch.
+     */
+    where?: ProblemInBookMarkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProblemInBookMarks to fetch.
+     */
+    orderBy?: ProblemInBookMarkOrderByWithRelationInput | ProblemInBookMarkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProblemInBookMarks.
+     */
+    cursor?: ProblemInBookMarkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProblemInBookMarks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProblemInBookMarks.
+     */
+    skip?: number
+    distinct?: ProblemInBookMarkScalarFieldEnum | ProblemInBookMarkScalarFieldEnum[]
+  }
+
+  /**
+   * ProblemInBookMark create
+   */
+  export type ProblemInBookMarkCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemInBookMark
+     */
+    select?: ProblemInBookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemInBookMark
+     */
+    omit?: ProblemInBookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemInBookMarkInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ProblemInBookMark.
+     */
+    data: XOR<ProblemInBookMarkCreateInput, ProblemInBookMarkUncheckedCreateInput>
+  }
+
+  /**
+   * ProblemInBookMark createMany
+   */
+  export type ProblemInBookMarkCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProblemInBookMarks.
+     */
+    data: ProblemInBookMarkCreateManyInput | ProblemInBookMarkCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ProblemInBookMark createManyAndReturn
+   */
+  export type ProblemInBookMarkCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemInBookMark
+     */
+    select?: ProblemInBookMarkSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemInBookMark
+     */
+    omit?: ProblemInBookMarkOmit<ExtArgs> | null
+    /**
+     * The data used to create many ProblemInBookMarks.
+     */
+    data: ProblemInBookMarkCreateManyInput | ProblemInBookMarkCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemInBookMarkIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProblemInBookMark update
+   */
+  export type ProblemInBookMarkUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemInBookMark
+     */
+    select?: ProblemInBookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemInBookMark
+     */
+    omit?: ProblemInBookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemInBookMarkInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ProblemInBookMark.
+     */
+    data: XOR<ProblemInBookMarkUpdateInput, ProblemInBookMarkUncheckedUpdateInput>
+    /**
+     * Choose, which ProblemInBookMark to update.
+     */
+    where: ProblemInBookMarkWhereUniqueInput
+  }
+
+  /**
+   * ProblemInBookMark updateMany
+   */
+  export type ProblemInBookMarkUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProblemInBookMarks.
+     */
+    data: XOR<ProblemInBookMarkUpdateManyMutationInput, ProblemInBookMarkUncheckedUpdateManyInput>
+    /**
+     * Filter which ProblemInBookMarks to update
+     */
+    where?: ProblemInBookMarkWhereInput
+    /**
+     * Limit how many ProblemInBookMarks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProblemInBookMark updateManyAndReturn
+   */
+  export type ProblemInBookMarkUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemInBookMark
+     */
+    select?: ProblemInBookMarkSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemInBookMark
+     */
+    omit?: ProblemInBookMarkOmit<ExtArgs> | null
+    /**
+     * The data used to update ProblemInBookMarks.
+     */
+    data: XOR<ProblemInBookMarkUpdateManyMutationInput, ProblemInBookMarkUncheckedUpdateManyInput>
+    /**
+     * Filter which ProblemInBookMarks to update
+     */
+    where?: ProblemInBookMarkWhereInput
+    /**
+     * Limit how many ProblemInBookMarks to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemInBookMarkIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProblemInBookMark upsert
+   */
+  export type ProblemInBookMarkUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemInBookMark
+     */
+    select?: ProblemInBookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemInBookMark
+     */
+    omit?: ProblemInBookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemInBookMarkInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ProblemInBookMark to update in case it exists.
+     */
+    where: ProblemInBookMarkWhereUniqueInput
+    /**
+     * In case the ProblemInBookMark found by the `where` argument doesn't exist, create a new ProblemInBookMark with this data.
+     */
+    create: XOR<ProblemInBookMarkCreateInput, ProblemInBookMarkUncheckedCreateInput>
+    /**
+     * In case the ProblemInBookMark was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProblemInBookMarkUpdateInput, ProblemInBookMarkUncheckedUpdateInput>
+  }
+
+  /**
+   * ProblemInBookMark delete
+   */
+  export type ProblemInBookMarkDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemInBookMark
+     */
+    select?: ProblemInBookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemInBookMark
+     */
+    omit?: ProblemInBookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemInBookMarkInclude<ExtArgs> | null
+    /**
+     * Filter which ProblemInBookMark to delete.
+     */
+    where: ProblemInBookMarkWhereUniqueInput
+  }
+
+  /**
+   * ProblemInBookMark deleteMany
+   */
+  export type ProblemInBookMarkDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProblemInBookMarks to delete
+     */
+    where?: ProblemInBookMarkWhereInput
+    /**
+     * Limit how many ProblemInBookMarks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProblemInBookMark without action
+   */
+  export type ProblemInBookMarkDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemInBookMark
+     */
+    select?: ProblemInBookMarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemInBookMark
+     */
+    omit?: ProblemInBookMarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemInBookMarkInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -7285,6 +9739,29 @@ export namespace Prisma {
   };
 
   export type ProblemSolvedScalarFieldEnum = (typeof ProblemSolvedScalarFieldEnum)[keyof typeof ProblemSolvedScalarFieldEnum]
+
+
+  export const BookMarkScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    description: 'description',
+    userId: 'userId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BookMarkScalarFieldEnum = (typeof BookMarkScalarFieldEnum)[keyof typeof BookMarkScalarFieldEnum]
+
+
+  export const ProblemInBookMarkScalarFieldEnum: {
+    id: 'id',
+    BookMarkId: 'BookMarkId',
+    problemId: 'problemId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ProblemInBookMarkScalarFieldEnum = (typeof ProblemInBookMarkScalarFieldEnum)[keyof typeof ProblemInBookMarkScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -7455,6 +9932,7 @@ export namespace Prisma {
     problems?: ProblemListRelationFilter
     submission?: SubmissionListRelationFilter
     problemSolved?: ProblemSolvedListRelationFilter
+    bookmarks?: BookMarkListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -7469,6 +9947,7 @@ export namespace Prisma {
     problems?: ProblemOrderByRelationAggregateInput
     submission?: SubmissionOrderByRelationAggregateInput
     problemSolved?: ProblemSolvedOrderByRelationAggregateInput
+    bookmarks?: BookMarkOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -7486,6 +9965,7 @@ export namespace Prisma {
     problems?: ProblemListRelationFilter
     submission?: SubmissionListRelationFilter
     problemSolved?: ProblemSolvedListRelationFilter
+    bookmarks?: BookMarkListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -7535,6 +10015,7 @@ export namespace Prisma {
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     submission?: SubmissionListRelationFilter
     solvedBy?: ProblemSolvedListRelationFilter
+    bookmarks?: ProblemInBookMarkListRelationFilter
   }
 
   export type ProblemOrderByWithRelationInput = {
@@ -7553,6 +10034,7 @@ export namespace Prisma {
     user?: UserOrderByWithRelationInput
     submission?: SubmissionOrderByRelationAggregateInput
     solvedBy?: ProblemSolvedOrderByRelationAggregateInput
+    bookmarks?: ProblemInBookMarkOrderByRelationAggregateInput
   }
 
   export type ProblemWhereUniqueInput = Prisma.AtLeast<{
@@ -7574,6 +10056,7 @@ export namespace Prisma {
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     submission?: SubmissionListRelationFilter
     solvedBy?: ProblemSolvedListRelationFilter
+    bookmarks?: ProblemInBookMarkListRelationFilter
   }, "id">
 
   export type ProblemOrderByWithAggregationInput = {
@@ -7869,6 +10352,128 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"ProblemSolved"> | Date | string
   }
 
+  export type BookMarkWhereInput = {
+    AND?: BookMarkWhereInput | BookMarkWhereInput[]
+    OR?: BookMarkWhereInput[]
+    NOT?: BookMarkWhereInput | BookMarkWhereInput[]
+    id?: StringFilter<"BookMark"> | string
+    name?: StringFilter<"BookMark"> | string
+    description?: StringFilter<"BookMark"> | string
+    userId?: StringFilter<"BookMark"> | string
+    createdAt?: DateTimeFilter<"BookMark"> | Date | string
+    updatedAt?: DateTimeFilter<"BookMark"> | Date | string
+    problems?: ProblemInBookMarkListRelationFilter
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type BookMarkOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    problems?: ProblemInBookMarkOrderByRelationAggregateInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type BookMarkWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name_userId?: BookMarkNameUserIdCompoundUniqueInput
+    AND?: BookMarkWhereInput | BookMarkWhereInput[]
+    OR?: BookMarkWhereInput[]
+    NOT?: BookMarkWhereInput | BookMarkWhereInput[]
+    name?: StringFilter<"BookMark"> | string
+    description?: StringFilter<"BookMark"> | string
+    userId?: StringFilter<"BookMark"> | string
+    createdAt?: DateTimeFilter<"BookMark"> | Date | string
+    updatedAt?: DateTimeFilter<"BookMark"> | Date | string
+    problems?: ProblemInBookMarkListRelationFilter
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "name_userId">
+
+  export type BookMarkOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BookMarkCountOrderByAggregateInput
+    _max?: BookMarkMaxOrderByAggregateInput
+    _min?: BookMarkMinOrderByAggregateInput
+  }
+
+  export type BookMarkScalarWhereWithAggregatesInput = {
+    AND?: BookMarkScalarWhereWithAggregatesInput | BookMarkScalarWhereWithAggregatesInput[]
+    OR?: BookMarkScalarWhereWithAggregatesInput[]
+    NOT?: BookMarkScalarWhereWithAggregatesInput | BookMarkScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"BookMark"> | string
+    name?: StringWithAggregatesFilter<"BookMark"> | string
+    description?: StringWithAggregatesFilter<"BookMark"> | string
+    userId?: StringWithAggregatesFilter<"BookMark"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"BookMark"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"BookMark"> | Date | string
+  }
+
+  export type ProblemInBookMarkWhereInput = {
+    AND?: ProblemInBookMarkWhereInput | ProblemInBookMarkWhereInput[]
+    OR?: ProblemInBookMarkWhereInput[]
+    NOT?: ProblemInBookMarkWhereInput | ProblemInBookMarkWhereInput[]
+    id?: StringFilter<"ProblemInBookMark"> | string
+    BookMarkId?: StringFilter<"ProblemInBookMark"> | string
+    problemId?: StringFilter<"ProblemInBookMark"> | string
+    createdAt?: DateTimeFilter<"ProblemInBookMark"> | Date | string
+    updatedAt?: DateTimeFilter<"ProblemInBookMark"> | Date | string
+    bookMark?: XOR<BookMarkScalarRelationFilter, BookMarkWhereInput>
+    problem?: XOR<ProblemScalarRelationFilter, ProblemWhereInput>
+  }
+
+  export type ProblemInBookMarkOrderByWithRelationInput = {
+    id?: SortOrder
+    BookMarkId?: SortOrder
+    problemId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    bookMark?: BookMarkOrderByWithRelationInput
+    problem?: ProblemOrderByWithRelationInput
+  }
+
+  export type ProblemInBookMarkWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ProblemInBookMarkWhereInput | ProblemInBookMarkWhereInput[]
+    OR?: ProblemInBookMarkWhereInput[]
+    NOT?: ProblemInBookMarkWhereInput | ProblemInBookMarkWhereInput[]
+    BookMarkId?: StringFilter<"ProblemInBookMark"> | string
+    problemId?: StringFilter<"ProblemInBookMark"> | string
+    createdAt?: DateTimeFilter<"ProblemInBookMark"> | Date | string
+    updatedAt?: DateTimeFilter<"ProblemInBookMark"> | Date | string
+    bookMark?: XOR<BookMarkScalarRelationFilter, BookMarkWhereInput>
+    problem?: XOR<ProblemScalarRelationFilter, ProblemWhereInput>
+  }, "id">
+
+  export type ProblemInBookMarkOrderByWithAggregationInput = {
+    id?: SortOrder
+    BookMarkId?: SortOrder
+    problemId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ProblemInBookMarkCountOrderByAggregateInput
+    _max?: ProblemInBookMarkMaxOrderByAggregateInput
+    _min?: ProblemInBookMarkMinOrderByAggregateInput
+  }
+
+  export type ProblemInBookMarkScalarWhereWithAggregatesInput = {
+    AND?: ProblemInBookMarkScalarWhereWithAggregatesInput | ProblemInBookMarkScalarWhereWithAggregatesInput[]
+    OR?: ProblemInBookMarkScalarWhereWithAggregatesInput[]
+    NOT?: ProblemInBookMarkScalarWhereWithAggregatesInput | ProblemInBookMarkScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ProblemInBookMark"> | string
+    BookMarkId?: StringWithAggregatesFilter<"ProblemInBookMark"> | string
+    problemId?: StringWithAggregatesFilter<"ProblemInBookMark"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ProblemInBookMark"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ProblemInBookMark"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     name?: string | null
@@ -7881,6 +10486,7 @@ export namespace Prisma {
     problems?: ProblemCreateNestedManyWithoutUserInput
     submission?: SubmissionCreateNestedManyWithoutUserInput
     problemSolved?: ProblemSolvedCreateNestedManyWithoutUserInput
+    bookmarks?: BookMarkCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -7895,6 +10501,7 @@ export namespace Prisma {
     problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
     submission?: SubmissionUncheckedCreateNestedManyWithoutUserInput
     problemSolved?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
+    bookmarks?: BookMarkUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -7909,6 +10516,7 @@ export namespace Prisma {
     problems?: ProblemUpdateManyWithoutUserNestedInput
     submission?: SubmissionUpdateManyWithoutUserNestedInput
     problemSolved?: ProblemSolvedUpdateManyWithoutUserNestedInput
+    bookmarks?: BookMarkUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -7923,6 +10531,7 @@ export namespace Prisma {
     problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
     submission?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
     problemSolved?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
+    bookmarks?: BookMarkUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -7973,6 +10582,7 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutProblemsInput
     submission?: SubmissionCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemInBookMarkCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUncheckedCreateInput = {
@@ -7990,6 +10600,7 @@ export namespace Prisma {
     referenceSolutions: JsonNullValueInput | InputJsonValue
     submission?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemInBookMarkUncheckedCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUpdateInput = {
@@ -8007,6 +10618,7 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutProblemsNestedInput
     submission?: SubmissionUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemInBookMarkUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateInput = {
@@ -8024,6 +10636,7 @@ export namespace Prisma {
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     submission?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemInBookMarkUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemCreateManyInput = {
@@ -8349,6 +10962,126 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type BookMarkCreateInput = {
+    id?: string
+    name: string
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: ProblemInBookMarkCreateNestedManyWithoutBookMarkInput
+    user: UserCreateNestedOneWithoutBookmarksInput
+  }
+
+  export type BookMarkUncheckedCreateInput = {
+    id?: string
+    name: string
+    description: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: ProblemInBookMarkUncheckedCreateNestedManyWithoutBookMarkInput
+  }
+
+  export type BookMarkUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: ProblemInBookMarkUpdateManyWithoutBookMarkNestedInput
+    user?: UserUpdateOneRequiredWithoutBookmarksNestedInput
+  }
+
+  export type BookMarkUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: ProblemInBookMarkUncheckedUpdateManyWithoutBookMarkNestedInput
+  }
+
+  export type BookMarkCreateManyInput = {
+    id?: string
+    name: string
+    description: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BookMarkUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookMarkUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemInBookMarkCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bookMark: BookMarkCreateNestedOneWithoutProblemsInput
+    problem: ProblemCreateNestedOneWithoutBookmarksInput
+  }
+
+  export type ProblemInBookMarkUncheckedCreateInput = {
+    id?: string
+    BookMarkId: string
+    problemId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProblemInBookMarkUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bookMark?: BookMarkUpdateOneRequiredWithoutProblemsNestedInput
+    problem?: ProblemUpdateOneRequiredWithoutBookmarksNestedInput
+  }
+
+  export type ProblemInBookMarkUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    BookMarkId?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemInBookMarkCreateManyInput = {
+    id?: string
+    BookMarkId: string
+    problemId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProblemInBookMarkUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemInBookMarkUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    BookMarkId?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -8415,6 +11148,12 @@ export namespace Prisma {
     none?: ProblemSolvedWhereInput
   }
 
+  export type BookMarkListRelationFilter = {
+    every?: BookMarkWhereInput
+    some?: BookMarkWhereInput
+    none?: BookMarkWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -8429,6 +11168,10 @@ export namespace Prisma {
   }
 
   export type ProblemSolvedOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BookMarkOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -8566,6 +11309,16 @@ export namespace Prisma {
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
+  }
+
+  export type ProblemInBookMarkListRelationFilter = {
+    every?: ProblemInBookMarkWhereInput
+    some?: ProblemInBookMarkWhereInput
+    none?: ProblemInBookMarkWhereInput
+  }
+
+  export type ProblemInBookMarkOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type ProblemCountOrderByAggregateInput = {
@@ -8830,6 +11583,67 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type BookMarkNameUserIdCompoundUniqueInput = {
+    name: string
+    userId: string
+  }
+
+  export type BookMarkCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BookMarkMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BookMarkMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BookMarkScalarRelationFilter = {
+    is?: BookMarkWhereInput
+    isNot?: BookMarkWhereInput
+  }
+
+  export type ProblemInBookMarkCountOrderByAggregateInput = {
+    id?: SortOrder
+    BookMarkId?: SortOrder
+    problemId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProblemInBookMarkMaxOrderByAggregateInput = {
+    id?: SortOrder
+    BookMarkId?: SortOrder
+    problemId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProblemInBookMarkMinOrderByAggregateInput = {
+    id?: SortOrder
+    BookMarkId?: SortOrder
+    problemId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type ProblemCreateNestedManyWithoutUserInput = {
     create?: XOR<ProblemCreateWithoutUserInput, ProblemUncheckedCreateWithoutUserInput> | ProblemCreateWithoutUserInput[] | ProblemUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ProblemCreateOrConnectWithoutUserInput | ProblemCreateOrConnectWithoutUserInput[]
@@ -8851,6 +11665,13 @@ export namespace Prisma {
     connect?: ProblemSolvedWhereUniqueInput | ProblemSolvedWhereUniqueInput[]
   }
 
+  export type BookMarkCreateNestedManyWithoutUserInput = {
+    create?: XOR<BookMarkCreateWithoutUserInput, BookMarkUncheckedCreateWithoutUserInput> | BookMarkCreateWithoutUserInput[] | BookMarkUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BookMarkCreateOrConnectWithoutUserInput | BookMarkCreateOrConnectWithoutUserInput[]
+    createMany?: BookMarkCreateManyUserInputEnvelope
+    connect?: BookMarkWhereUniqueInput | BookMarkWhereUniqueInput[]
+  }
+
   export type ProblemUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<ProblemCreateWithoutUserInput, ProblemUncheckedCreateWithoutUserInput> | ProblemCreateWithoutUserInput[] | ProblemUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ProblemCreateOrConnectWithoutUserInput | ProblemCreateOrConnectWithoutUserInput[]
@@ -8870,6 +11691,13 @@ export namespace Prisma {
     connectOrCreate?: ProblemSolvedCreateOrConnectWithoutUserInput | ProblemSolvedCreateOrConnectWithoutUserInput[]
     createMany?: ProblemSolvedCreateManyUserInputEnvelope
     connect?: ProblemSolvedWhereUniqueInput | ProblemSolvedWhereUniqueInput[]
+  }
+
+  export type BookMarkUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<BookMarkCreateWithoutUserInput, BookMarkUncheckedCreateWithoutUserInput> | BookMarkCreateWithoutUserInput[] | BookMarkUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BookMarkCreateOrConnectWithoutUserInput | BookMarkCreateOrConnectWithoutUserInput[]
+    createMany?: BookMarkCreateManyUserInputEnvelope
+    connect?: BookMarkWhereUniqueInput | BookMarkWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -8930,6 +11758,20 @@ export namespace Prisma {
     deleteMany?: ProblemSolvedScalarWhereInput | ProblemSolvedScalarWhereInput[]
   }
 
+  export type BookMarkUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BookMarkCreateWithoutUserInput, BookMarkUncheckedCreateWithoutUserInput> | BookMarkCreateWithoutUserInput[] | BookMarkUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BookMarkCreateOrConnectWithoutUserInput | BookMarkCreateOrConnectWithoutUserInput[]
+    upsert?: BookMarkUpsertWithWhereUniqueWithoutUserInput | BookMarkUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BookMarkCreateManyUserInputEnvelope
+    set?: BookMarkWhereUniqueInput | BookMarkWhereUniqueInput[]
+    disconnect?: BookMarkWhereUniqueInput | BookMarkWhereUniqueInput[]
+    delete?: BookMarkWhereUniqueInput | BookMarkWhereUniqueInput[]
+    connect?: BookMarkWhereUniqueInput | BookMarkWhereUniqueInput[]
+    update?: BookMarkUpdateWithWhereUniqueWithoutUserInput | BookMarkUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BookMarkUpdateManyWithWhereWithoutUserInput | BookMarkUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BookMarkScalarWhereInput | BookMarkScalarWhereInput[]
+  }
+
   export type ProblemUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<ProblemCreateWithoutUserInput, ProblemUncheckedCreateWithoutUserInput> | ProblemCreateWithoutUserInput[] | ProblemUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ProblemCreateOrConnectWithoutUserInput | ProblemCreateOrConnectWithoutUserInput[]
@@ -8972,6 +11814,20 @@ export namespace Prisma {
     deleteMany?: ProblemSolvedScalarWhereInput | ProblemSolvedScalarWhereInput[]
   }
 
+  export type BookMarkUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BookMarkCreateWithoutUserInput, BookMarkUncheckedCreateWithoutUserInput> | BookMarkCreateWithoutUserInput[] | BookMarkUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BookMarkCreateOrConnectWithoutUserInput | BookMarkCreateOrConnectWithoutUserInput[]
+    upsert?: BookMarkUpsertWithWhereUniqueWithoutUserInput | BookMarkUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BookMarkCreateManyUserInputEnvelope
+    set?: BookMarkWhereUniqueInput | BookMarkWhereUniqueInput[]
+    disconnect?: BookMarkWhereUniqueInput | BookMarkWhereUniqueInput[]
+    delete?: BookMarkWhereUniqueInput | BookMarkWhereUniqueInput[]
+    connect?: BookMarkWhereUniqueInput | BookMarkWhereUniqueInput[]
+    update?: BookMarkUpdateWithWhereUniqueWithoutUserInput | BookMarkUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BookMarkUpdateManyWithWhereWithoutUserInput | BookMarkUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BookMarkScalarWhereInput | BookMarkScalarWhereInput[]
+  }
+
   export type ProblemCreatetagsInput = {
     set: string[]
   }
@@ -8996,6 +11852,13 @@ export namespace Prisma {
     connect?: ProblemSolvedWhereUniqueInput | ProblemSolvedWhereUniqueInput[]
   }
 
+  export type ProblemInBookMarkCreateNestedManyWithoutProblemInput = {
+    create?: XOR<ProblemInBookMarkCreateWithoutProblemInput, ProblemInBookMarkUncheckedCreateWithoutProblemInput> | ProblemInBookMarkCreateWithoutProblemInput[] | ProblemInBookMarkUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: ProblemInBookMarkCreateOrConnectWithoutProblemInput | ProblemInBookMarkCreateOrConnectWithoutProblemInput[]
+    createMany?: ProblemInBookMarkCreateManyProblemInputEnvelope
+    connect?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+  }
+
   export type SubmissionUncheckedCreateNestedManyWithoutProblemInput = {
     create?: XOR<SubmissionCreateWithoutProblemInput, SubmissionUncheckedCreateWithoutProblemInput> | SubmissionCreateWithoutProblemInput[] | SubmissionUncheckedCreateWithoutProblemInput[]
     connectOrCreate?: SubmissionCreateOrConnectWithoutProblemInput | SubmissionCreateOrConnectWithoutProblemInput[]
@@ -9008,6 +11871,13 @@ export namespace Prisma {
     connectOrCreate?: ProblemSolvedCreateOrConnectWithoutProblemInput | ProblemSolvedCreateOrConnectWithoutProblemInput[]
     createMany?: ProblemSolvedCreateManyProblemInputEnvelope
     connect?: ProblemSolvedWhereUniqueInput | ProblemSolvedWhereUniqueInput[]
+  }
+
+  export type ProblemInBookMarkUncheckedCreateNestedManyWithoutProblemInput = {
+    create?: XOR<ProblemInBookMarkCreateWithoutProblemInput, ProblemInBookMarkUncheckedCreateWithoutProblemInput> | ProblemInBookMarkCreateWithoutProblemInput[] | ProblemInBookMarkUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: ProblemInBookMarkCreateOrConnectWithoutProblemInput | ProblemInBookMarkCreateOrConnectWithoutProblemInput[]
+    createMany?: ProblemInBookMarkCreateManyProblemInputEnvelope
+    connect?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
   }
 
   export type EnumDifficultyFieldUpdateOperationsInput = {
@@ -9055,6 +11925,20 @@ export namespace Prisma {
     deleteMany?: ProblemSolvedScalarWhereInput | ProblemSolvedScalarWhereInput[]
   }
 
+  export type ProblemInBookMarkUpdateManyWithoutProblemNestedInput = {
+    create?: XOR<ProblemInBookMarkCreateWithoutProblemInput, ProblemInBookMarkUncheckedCreateWithoutProblemInput> | ProblemInBookMarkCreateWithoutProblemInput[] | ProblemInBookMarkUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: ProblemInBookMarkCreateOrConnectWithoutProblemInput | ProblemInBookMarkCreateOrConnectWithoutProblemInput[]
+    upsert?: ProblemInBookMarkUpsertWithWhereUniqueWithoutProblemInput | ProblemInBookMarkUpsertWithWhereUniqueWithoutProblemInput[]
+    createMany?: ProblemInBookMarkCreateManyProblemInputEnvelope
+    set?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+    disconnect?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+    delete?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+    connect?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+    update?: ProblemInBookMarkUpdateWithWhereUniqueWithoutProblemInput | ProblemInBookMarkUpdateWithWhereUniqueWithoutProblemInput[]
+    updateMany?: ProblemInBookMarkUpdateManyWithWhereWithoutProblemInput | ProblemInBookMarkUpdateManyWithWhereWithoutProblemInput[]
+    deleteMany?: ProblemInBookMarkScalarWhereInput | ProblemInBookMarkScalarWhereInput[]
+  }
+
   export type SubmissionUncheckedUpdateManyWithoutProblemNestedInput = {
     create?: XOR<SubmissionCreateWithoutProblemInput, SubmissionUncheckedCreateWithoutProblemInput> | SubmissionCreateWithoutProblemInput[] | SubmissionUncheckedCreateWithoutProblemInput[]
     connectOrCreate?: SubmissionCreateOrConnectWithoutProblemInput | SubmissionCreateOrConnectWithoutProblemInput[]
@@ -9081,6 +11965,20 @@ export namespace Prisma {
     update?: ProblemSolvedUpdateWithWhereUniqueWithoutProblemInput | ProblemSolvedUpdateWithWhereUniqueWithoutProblemInput[]
     updateMany?: ProblemSolvedUpdateManyWithWhereWithoutProblemInput | ProblemSolvedUpdateManyWithWhereWithoutProblemInput[]
     deleteMany?: ProblemSolvedScalarWhereInput | ProblemSolvedScalarWhereInput[]
+  }
+
+  export type ProblemInBookMarkUncheckedUpdateManyWithoutProblemNestedInput = {
+    create?: XOR<ProblemInBookMarkCreateWithoutProblemInput, ProblemInBookMarkUncheckedCreateWithoutProblemInput> | ProblemInBookMarkCreateWithoutProblemInput[] | ProblemInBookMarkUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: ProblemInBookMarkCreateOrConnectWithoutProblemInput | ProblemInBookMarkCreateOrConnectWithoutProblemInput[]
+    upsert?: ProblemInBookMarkUpsertWithWhereUniqueWithoutProblemInput | ProblemInBookMarkUpsertWithWhereUniqueWithoutProblemInput[]
+    createMany?: ProblemInBookMarkCreateManyProblemInputEnvelope
+    set?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+    disconnect?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+    delete?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+    connect?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+    update?: ProblemInBookMarkUpdateWithWhereUniqueWithoutProblemInput | ProblemInBookMarkUpdateWithWhereUniqueWithoutProblemInput[]
+    updateMany?: ProblemInBookMarkUpdateManyWithWhereWithoutProblemInput | ProblemInBookMarkUpdateManyWithWhereWithoutProblemInput[]
+    deleteMany?: ProblemInBookMarkScalarWhereInput | ProblemInBookMarkScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutSubmissionInput = {
@@ -9205,6 +12103,90 @@ export namespace Prisma {
     upsert?: ProblemUpsertWithoutSolvedByInput
     connect?: ProblemWhereUniqueInput
     update?: XOR<XOR<ProblemUpdateToOneWithWhereWithoutSolvedByInput, ProblemUpdateWithoutSolvedByInput>, ProblemUncheckedUpdateWithoutSolvedByInput>
+  }
+
+  export type ProblemInBookMarkCreateNestedManyWithoutBookMarkInput = {
+    create?: XOR<ProblemInBookMarkCreateWithoutBookMarkInput, ProblemInBookMarkUncheckedCreateWithoutBookMarkInput> | ProblemInBookMarkCreateWithoutBookMarkInput[] | ProblemInBookMarkUncheckedCreateWithoutBookMarkInput[]
+    connectOrCreate?: ProblemInBookMarkCreateOrConnectWithoutBookMarkInput | ProblemInBookMarkCreateOrConnectWithoutBookMarkInput[]
+    createMany?: ProblemInBookMarkCreateManyBookMarkInputEnvelope
+    connect?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+  }
+
+  export type UserCreateNestedOneWithoutBookmarksInput = {
+    create?: XOR<UserCreateWithoutBookmarksInput, UserUncheckedCreateWithoutBookmarksInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBookmarksInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ProblemInBookMarkUncheckedCreateNestedManyWithoutBookMarkInput = {
+    create?: XOR<ProblemInBookMarkCreateWithoutBookMarkInput, ProblemInBookMarkUncheckedCreateWithoutBookMarkInput> | ProblemInBookMarkCreateWithoutBookMarkInput[] | ProblemInBookMarkUncheckedCreateWithoutBookMarkInput[]
+    connectOrCreate?: ProblemInBookMarkCreateOrConnectWithoutBookMarkInput | ProblemInBookMarkCreateOrConnectWithoutBookMarkInput[]
+    createMany?: ProblemInBookMarkCreateManyBookMarkInputEnvelope
+    connect?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+  }
+
+  export type ProblemInBookMarkUpdateManyWithoutBookMarkNestedInput = {
+    create?: XOR<ProblemInBookMarkCreateWithoutBookMarkInput, ProblemInBookMarkUncheckedCreateWithoutBookMarkInput> | ProblemInBookMarkCreateWithoutBookMarkInput[] | ProblemInBookMarkUncheckedCreateWithoutBookMarkInput[]
+    connectOrCreate?: ProblemInBookMarkCreateOrConnectWithoutBookMarkInput | ProblemInBookMarkCreateOrConnectWithoutBookMarkInput[]
+    upsert?: ProblemInBookMarkUpsertWithWhereUniqueWithoutBookMarkInput | ProblemInBookMarkUpsertWithWhereUniqueWithoutBookMarkInput[]
+    createMany?: ProblemInBookMarkCreateManyBookMarkInputEnvelope
+    set?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+    disconnect?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+    delete?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+    connect?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+    update?: ProblemInBookMarkUpdateWithWhereUniqueWithoutBookMarkInput | ProblemInBookMarkUpdateWithWhereUniqueWithoutBookMarkInput[]
+    updateMany?: ProblemInBookMarkUpdateManyWithWhereWithoutBookMarkInput | ProblemInBookMarkUpdateManyWithWhereWithoutBookMarkInput[]
+    deleteMany?: ProblemInBookMarkScalarWhereInput | ProblemInBookMarkScalarWhereInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutBookmarksNestedInput = {
+    create?: XOR<UserCreateWithoutBookmarksInput, UserUncheckedCreateWithoutBookmarksInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBookmarksInput
+    upsert?: UserUpsertWithoutBookmarksInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBookmarksInput, UserUpdateWithoutBookmarksInput>, UserUncheckedUpdateWithoutBookmarksInput>
+  }
+
+  export type ProblemInBookMarkUncheckedUpdateManyWithoutBookMarkNestedInput = {
+    create?: XOR<ProblemInBookMarkCreateWithoutBookMarkInput, ProblemInBookMarkUncheckedCreateWithoutBookMarkInput> | ProblemInBookMarkCreateWithoutBookMarkInput[] | ProblemInBookMarkUncheckedCreateWithoutBookMarkInput[]
+    connectOrCreate?: ProblemInBookMarkCreateOrConnectWithoutBookMarkInput | ProblemInBookMarkCreateOrConnectWithoutBookMarkInput[]
+    upsert?: ProblemInBookMarkUpsertWithWhereUniqueWithoutBookMarkInput | ProblemInBookMarkUpsertWithWhereUniqueWithoutBookMarkInput[]
+    createMany?: ProblemInBookMarkCreateManyBookMarkInputEnvelope
+    set?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+    disconnect?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+    delete?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+    connect?: ProblemInBookMarkWhereUniqueInput | ProblemInBookMarkWhereUniqueInput[]
+    update?: ProblemInBookMarkUpdateWithWhereUniqueWithoutBookMarkInput | ProblemInBookMarkUpdateWithWhereUniqueWithoutBookMarkInput[]
+    updateMany?: ProblemInBookMarkUpdateManyWithWhereWithoutBookMarkInput | ProblemInBookMarkUpdateManyWithWhereWithoutBookMarkInput[]
+    deleteMany?: ProblemInBookMarkScalarWhereInput | ProblemInBookMarkScalarWhereInput[]
+  }
+
+  export type BookMarkCreateNestedOneWithoutProblemsInput = {
+    create?: XOR<BookMarkCreateWithoutProblemsInput, BookMarkUncheckedCreateWithoutProblemsInput>
+    connectOrCreate?: BookMarkCreateOrConnectWithoutProblemsInput
+    connect?: BookMarkWhereUniqueInput
+  }
+
+  export type ProblemCreateNestedOneWithoutBookmarksInput = {
+    create?: XOR<ProblemCreateWithoutBookmarksInput, ProblemUncheckedCreateWithoutBookmarksInput>
+    connectOrCreate?: ProblemCreateOrConnectWithoutBookmarksInput
+    connect?: ProblemWhereUniqueInput
+  }
+
+  export type BookMarkUpdateOneRequiredWithoutProblemsNestedInput = {
+    create?: XOR<BookMarkCreateWithoutProblemsInput, BookMarkUncheckedCreateWithoutProblemsInput>
+    connectOrCreate?: BookMarkCreateOrConnectWithoutProblemsInput
+    upsert?: BookMarkUpsertWithoutProblemsInput
+    connect?: BookMarkWhereUniqueInput
+    update?: XOR<XOR<BookMarkUpdateToOneWithWhereWithoutProblemsInput, BookMarkUpdateWithoutProblemsInput>, BookMarkUncheckedUpdateWithoutProblemsInput>
+  }
+
+  export type ProblemUpdateOneRequiredWithoutBookmarksNestedInput = {
+    create?: XOR<ProblemCreateWithoutBookmarksInput, ProblemUncheckedCreateWithoutBookmarksInput>
+    connectOrCreate?: ProblemCreateOrConnectWithoutBookmarksInput
+    upsert?: ProblemUpsertWithoutBookmarksInput
+    connect?: ProblemWhereUniqueInput
+    update?: XOR<XOR<ProblemUpdateToOneWithWhereWithoutBookmarksInput, ProblemUpdateWithoutBookmarksInput>, ProblemUncheckedUpdateWithoutBookmarksInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -9427,6 +12409,7 @@ export namespace Prisma {
     referenceSolutions: JsonNullValueInput | InputJsonValue
     submission?: SubmissionCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemInBookMarkCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUncheckedCreateWithoutUserInput = {
@@ -9443,6 +12426,7 @@ export namespace Prisma {
     referenceSolutions: JsonNullValueInput | InputJsonValue
     submission?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemInBookMarkUncheckedCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemCreateOrConnectWithoutUserInput = {
@@ -9518,6 +12502,34 @@ export namespace Prisma {
 
   export type ProblemSolvedCreateManyUserInputEnvelope = {
     data: ProblemSolvedCreateManyUserInput | ProblemSolvedCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BookMarkCreateWithoutUserInput = {
+    id?: string
+    name: string
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: ProblemInBookMarkCreateNestedManyWithoutBookMarkInput
+  }
+
+  export type BookMarkUncheckedCreateWithoutUserInput = {
+    id?: string
+    name: string
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: ProblemInBookMarkUncheckedCreateNestedManyWithoutBookMarkInput
+  }
+
+  export type BookMarkCreateOrConnectWithoutUserInput = {
+    where: BookMarkWhereUniqueInput
+    create: XOR<BookMarkCreateWithoutUserInput, BookMarkUncheckedCreateWithoutUserInput>
+  }
+
+  export type BookMarkCreateManyUserInputEnvelope = {
+    data: BookMarkCreateManyUserInput | BookMarkCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -9617,6 +12629,34 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"ProblemSolved"> | Date | string
   }
 
+  export type BookMarkUpsertWithWhereUniqueWithoutUserInput = {
+    where: BookMarkWhereUniqueInput
+    update: XOR<BookMarkUpdateWithoutUserInput, BookMarkUncheckedUpdateWithoutUserInput>
+    create: XOR<BookMarkCreateWithoutUserInput, BookMarkUncheckedCreateWithoutUserInput>
+  }
+
+  export type BookMarkUpdateWithWhereUniqueWithoutUserInput = {
+    where: BookMarkWhereUniqueInput
+    data: XOR<BookMarkUpdateWithoutUserInput, BookMarkUncheckedUpdateWithoutUserInput>
+  }
+
+  export type BookMarkUpdateManyWithWhereWithoutUserInput = {
+    where: BookMarkScalarWhereInput
+    data: XOR<BookMarkUpdateManyMutationInput, BookMarkUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type BookMarkScalarWhereInput = {
+    AND?: BookMarkScalarWhereInput | BookMarkScalarWhereInput[]
+    OR?: BookMarkScalarWhereInput[]
+    NOT?: BookMarkScalarWhereInput | BookMarkScalarWhereInput[]
+    id?: StringFilter<"BookMark"> | string
+    name?: StringFilter<"BookMark"> | string
+    description?: StringFilter<"BookMark"> | string
+    userId?: StringFilter<"BookMark"> | string
+    createdAt?: DateTimeFilter<"BookMark"> | Date | string
+    updatedAt?: DateTimeFilter<"BookMark"> | Date | string
+  }
+
   export type UserCreateWithoutProblemsInput = {
     id?: string
     name?: string | null
@@ -9628,6 +12668,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     submission?: SubmissionCreateNestedManyWithoutUserInput
     problemSolved?: ProblemSolvedCreateNestedManyWithoutUserInput
+    bookmarks?: BookMarkCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProblemsInput = {
@@ -9641,6 +12682,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     submission?: SubmissionUncheckedCreateNestedManyWithoutUserInput
     problemSolved?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
+    bookmarks?: BookMarkUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProblemsInput = {
@@ -9714,6 +12756,30 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ProblemInBookMarkCreateWithoutProblemInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bookMark: BookMarkCreateNestedOneWithoutProblemsInput
+  }
+
+  export type ProblemInBookMarkUncheckedCreateWithoutProblemInput = {
+    id?: string
+    BookMarkId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProblemInBookMarkCreateOrConnectWithoutProblemInput = {
+    where: ProblemInBookMarkWhereUniqueInput
+    create: XOR<ProblemInBookMarkCreateWithoutProblemInput, ProblemInBookMarkUncheckedCreateWithoutProblemInput>
+  }
+
+  export type ProblemInBookMarkCreateManyProblemInputEnvelope = {
+    data: ProblemInBookMarkCreateManyProblemInput | ProblemInBookMarkCreateManyProblemInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserUpsertWithoutProblemsInput = {
     update: XOR<UserUpdateWithoutProblemsInput, UserUncheckedUpdateWithoutProblemsInput>
     create: XOR<UserCreateWithoutProblemsInput, UserUncheckedCreateWithoutProblemsInput>
@@ -9736,6 +12802,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submission?: SubmissionUpdateManyWithoutUserNestedInput
     problemSolved?: ProblemSolvedUpdateManyWithoutUserNestedInput
+    bookmarks?: BookMarkUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProblemsInput = {
@@ -9749,6 +12816,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submission?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
     problemSolved?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
+    bookmarks?: BookMarkUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type SubmissionUpsertWithWhereUniqueWithoutProblemInput = {
@@ -9783,6 +12851,33 @@ export namespace Prisma {
     data: XOR<ProblemSolvedUpdateManyMutationInput, ProblemSolvedUncheckedUpdateManyWithoutProblemInput>
   }
 
+  export type ProblemInBookMarkUpsertWithWhereUniqueWithoutProblemInput = {
+    where: ProblemInBookMarkWhereUniqueInput
+    update: XOR<ProblemInBookMarkUpdateWithoutProblemInput, ProblemInBookMarkUncheckedUpdateWithoutProblemInput>
+    create: XOR<ProblemInBookMarkCreateWithoutProblemInput, ProblemInBookMarkUncheckedCreateWithoutProblemInput>
+  }
+
+  export type ProblemInBookMarkUpdateWithWhereUniqueWithoutProblemInput = {
+    where: ProblemInBookMarkWhereUniqueInput
+    data: XOR<ProblemInBookMarkUpdateWithoutProblemInput, ProblemInBookMarkUncheckedUpdateWithoutProblemInput>
+  }
+
+  export type ProblemInBookMarkUpdateManyWithWhereWithoutProblemInput = {
+    where: ProblemInBookMarkScalarWhereInput
+    data: XOR<ProblemInBookMarkUpdateManyMutationInput, ProblemInBookMarkUncheckedUpdateManyWithoutProblemInput>
+  }
+
+  export type ProblemInBookMarkScalarWhereInput = {
+    AND?: ProblemInBookMarkScalarWhereInput | ProblemInBookMarkScalarWhereInput[]
+    OR?: ProblemInBookMarkScalarWhereInput[]
+    NOT?: ProblemInBookMarkScalarWhereInput | ProblemInBookMarkScalarWhereInput[]
+    id?: StringFilter<"ProblemInBookMark"> | string
+    BookMarkId?: StringFilter<"ProblemInBookMark"> | string
+    problemId?: StringFilter<"ProblemInBookMark"> | string
+    createdAt?: DateTimeFilter<"ProblemInBookMark"> | Date | string
+    updatedAt?: DateTimeFilter<"ProblemInBookMark"> | Date | string
+  }
+
   export type UserCreateWithoutSubmissionInput = {
     id?: string
     name?: string | null
@@ -9794,6 +12889,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     problems?: ProblemCreateNestedManyWithoutUserInput
     problemSolved?: ProblemSolvedCreateNestedManyWithoutUserInput
+    bookmarks?: BookMarkCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSubmissionInput = {
@@ -9807,6 +12903,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
     problemSolved?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
+    bookmarks?: BookMarkUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSubmissionInput = {
@@ -9828,6 +12925,7 @@ export namespace Prisma {
     referenceSolutions: JsonNullValueInput | InputJsonValue
     user: UserCreateNestedOneWithoutProblemsInput
     solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemInBookMarkCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUncheckedCreateWithoutSubmissionInput = {
@@ -9844,6 +12942,7 @@ export namespace Prisma {
     codeSnippets: JsonNullValueInput | InputJsonValue
     referenceSolutions: JsonNullValueInput | InputJsonValue
     solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemInBookMarkUncheckedCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemCreateOrConnectWithoutSubmissionInput = {
@@ -9913,6 +13012,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUpdateManyWithoutUserNestedInput
     problemSolved?: ProblemSolvedUpdateManyWithoutUserNestedInput
+    bookmarks?: BookMarkUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSubmissionInput = {
@@ -9926,6 +13026,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
     problemSolved?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
+    bookmarks?: BookMarkUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ProblemUpsertWithoutSubmissionInput = {
@@ -9953,6 +13054,7 @@ export namespace Prisma {
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     user?: UserUpdateOneRequiredWithoutProblemsNestedInput
     solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemInBookMarkUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateWithoutSubmissionInput = {
@@ -9969,6 +13071,7 @@ export namespace Prisma {
     codeSnippets?: JsonNullValueInput | InputJsonValue
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemInBookMarkUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type testCaseResultUpsertWithWhereUniqueWithoutSubmissionInput = {
@@ -10097,6 +13200,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     problems?: ProblemCreateNestedManyWithoutUserInput
     submission?: SubmissionCreateNestedManyWithoutUserInput
+    bookmarks?: BookMarkCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProblemSolvedInput = {
@@ -10110,6 +13214,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
     submission?: SubmissionUncheckedCreateNestedManyWithoutUserInput
+    bookmarks?: BookMarkUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProblemSolvedInput = {
@@ -10131,6 +13236,7 @@ export namespace Prisma {
     referenceSolutions: JsonNullValueInput | InputJsonValue
     user: UserCreateNestedOneWithoutProblemsInput
     submission?: SubmissionCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemInBookMarkCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUncheckedCreateWithoutSolvedByInput = {
@@ -10147,6 +13253,7 @@ export namespace Prisma {
     codeSnippets: JsonNullValueInput | InputJsonValue
     referenceSolutions: JsonNullValueInput | InputJsonValue
     submission?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemInBookMarkUncheckedCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemCreateOrConnectWithoutSolvedByInput = {
@@ -10176,6 +13283,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUpdateManyWithoutUserNestedInput
     submission?: SubmissionUpdateManyWithoutUserNestedInput
+    bookmarks?: BookMarkUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProblemSolvedInput = {
@@ -10189,6 +13297,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
     submission?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
+    bookmarks?: BookMarkUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ProblemUpsertWithoutSolvedByInput = {
@@ -10216,6 +13325,7 @@ export namespace Prisma {
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     user?: UserUpdateOneRequiredWithoutProblemsNestedInput
     submission?: SubmissionUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemInBookMarkUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateWithoutSolvedByInput = {
@@ -10232,6 +13342,255 @@ export namespace Prisma {
     codeSnippets?: JsonNullValueInput | InputJsonValue
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     submission?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemInBookMarkUncheckedUpdateManyWithoutProblemNestedInput
+  }
+
+  export type ProblemInBookMarkCreateWithoutBookMarkInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problem: ProblemCreateNestedOneWithoutBookmarksInput
+  }
+
+  export type ProblemInBookMarkUncheckedCreateWithoutBookMarkInput = {
+    id?: string
+    problemId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProblemInBookMarkCreateOrConnectWithoutBookMarkInput = {
+    where: ProblemInBookMarkWhereUniqueInput
+    create: XOR<ProblemInBookMarkCreateWithoutBookMarkInput, ProblemInBookMarkUncheckedCreateWithoutBookMarkInput>
+  }
+
+  export type ProblemInBookMarkCreateManyBookMarkInputEnvelope = {
+    data: ProblemInBookMarkCreateManyBookMarkInput | ProblemInBookMarkCreateManyBookMarkInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserCreateWithoutBookmarksInput = {
+    id?: string
+    name?: string | null
+    email: string
+    image?: string | null
+    role?: $Enums.UserRole
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: ProblemCreateNestedManyWithoutUserInput
+    submission?: SubmissionCreateNestedManyWithoutUserInput
+    problemSolved?: ProblemSolvedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutBookmarksInput = {
+    id?: string
+    name?: string | null
+    email: string
+    image?: string | null
+    role?: $Enums.UserRole
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
+    submission?: SubmissionUncheckedCreateNestedManyWithoutUserInput
+    problemSolved?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutBookmarksInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutBookmarksInput, UserUncheckedCreateWithoutBookmarksInput>
+  }
+
+  export type ProblemInBookMarkUpsertWithWhereUniqueWithoutBookMarkInput = {
+    where: ProblemInBookMarkWhereUniqueInput
+    update: XOR<ProblemInBookMarkUpdateWithoutBookMarkInput, ProblemInBookMarkUncheckedUpdateWithoutBookMarkInput>
+    create: XOR<ProblemInBookMarkCreateWithoutBookMarkInput, ProblemInBookMarkUncheckedCreateWithoutBookMarkInput>
+  }
+
+  export type ProblemInBookMarkUpdateWithWhereUniqueWithoutBookMarkInput = {
+    where: ProblemInBookMarkWhereUniqueInput
+    data: XOR<ProblemInBookMarkUpdateWithoutBookMarkInput, ProblemInBookMarkUncheckedUpdateWithoutBookMarkInput>
+  }
+
+  export type ProblemInBookMarkUpdateManyWithWhereWithoutBookMarkInput = {
+    where: ProblemInBookMarkScalarWhereInput
+    data: XOR<ProblemInBookMarkUpdateManyMutationInput, ProblemInBookMarkUncheckedUpdateManyWithoutBookMarkInput>
+  }
+
+  export type UserUpsertWithoutBookmarksInput = {
+    update: XOR<UserUpdateWithoutBookmarksInput, UserUncheckedUpdateWithoutBookmarksInput>
+    create: XOR<UserCreateWithoutBookmarksInput, UserUncheckedCreateWithoutBookmarksInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutBookmarksInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutBookmarksInput, UserUncheckedUpdateWithoutBookmarksInput>
+  }
+
+  export type UserUpdateWithoutBookmarksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: ProblemUpdateManyWithoutUserNestedInput
+    submission?: SubmissionUpdateManyWithoutUserNestedInput
+    problemSolved?: ProblemSolvedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutBookmarksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
+    submission?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
+    problemSolved?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type BookMarkCreateWithoutProblemsInput = {
+    id?: string
+    name: string
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutBookmarksInput
+  }
+
+  export type BookMarkUncheckedCreateWithoutProblemsInput = {
+    id?: string
+    name: string
+    description: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BookMarkCreateOrConnectWithoutProblemsInput = {
+    where: BookMarkWhereUniqueInput
+    create: XOR<BookMarkCreateWithoutProblemsInput, BookMarkUncheckedCreateWithoutProblemsInput>
+  }
+
+  export type ProblemCreateWithoutBookmarksInput = {
+    id?: string
+    title: string
+    description: string
+    difficulty: $Enums.Difficulty
+    tags?: ProblemCreatetagsInput | string[]
+    examples: JsonNullValueInput | InputJsonValue
+    constraints: string
+    editorial: string
+    testcases: JsonNullValueInput | InputJsonValue
+    codeSnippets: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
+    user: UserCreateNestedOneWithoutProblemsInput
+    submission?: SubmissionCreateNestedManyWithoutProblemInput
+    solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
+  }
+
+  export type ProblemUncheckedCreateWithoutBookmarksInput = {
+    id?: string
+    title: string
+    description: string
+    difficulty: $Enums.Difficulty
+    tags?: ProblemCreatetagsInput | string[]
+    userId: string
+    examples: JsonNullValueInput | InputJsonValue
+    constraints: string
+    editorial: string
+    testcases: JsonNullValueInput | InputJsonValue
+    codeSnippets: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
+    submission?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
+    solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
+  }
+
+  export type ProblemCreateOrConnectWithoutBookmarksInput = {
+    where: ProblemWhereUniqueInput
+    create: XOR<ProblemCreateWithoutBookmarksInput, ProblemUncheckedCreateWithoutBookmarksInput>
+  }
+
+  export type BookMarkUpsertWithoutProblemsInput = {
+    update: XOR<BookMarkUpdateWithoutProblemsInput, BookMarkUncheckedUpdateWithoutProblemsInput>
+    create: XOR<BookMarkCreateWithoutProblemsInput, BookMarkUncheckedCreateWithoutProblemsInput>
+    where?: BookMarkWhereInput
+  }
+
+  export type BookMarkUpdateToOneWithWhereWithoutProblemsInput = {
+    where?: BookMarkWhereInput
+    data: XOR<BookMarkUpdateWithoutProblemsInput, BookMarkUncheckedUpdateWithoutProblemsInput>
+  }
+
+  export type BookMarkUpdateWithoutProblemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutBookmarksNestedInput
+  }
+
+  export type BookMarkUncheckedUpdateWithoutProblemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemUpsertWithoutBookmarksInput = {
+    update: XOR<ProblemUpdateWithoutBookmarksInput, ProblemUncheckedUpdateWithoutBookmarksInput>
+    create: XOR<ProblemCreateWithoutBookmarksInput, ProblemUncheckedCreateWithoutBookmarksInput>
+    where?: ProblemWhereInput
+  }
+
+  export type ProblemUpdateToOneWithWhereWithoutBookmarksInput = {
+    where?: ProblemWhereInput
+    data: XOR<ProblemUpdateWithoutBookmarksInput, ProblemUncheckedUpdateWithoutBookmarksInput>
+  }
+
+  export type ProblemUpdateWithoutBookmarksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    tags?: ProblemUpdatetagsInput | string[]
+    examples?: JsonNullValueInput | InputJsonValue
+    constraints?: StringFieldUpdateOperationsInput | string
+    editorial?: StringFieldUpdateOperationsInput | string
+    testcases?: JsonNullValueInput | InputJsonValue
+    codeSnippets?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
+    user?: UserUpdateOneRequiredWithoutProblemsNestedInput
+    submission?: SubmissionUpdateManyWithoutProblemNestedInput
+    solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
+  }
+
+  export type ProblemUncheckedUpdateWithoutBookmarksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    tags?: ProblemUpdatetagsInput | string[]
+    userId?: StringFieldUpdateOperationsInput | string
+    examples?: JsonNullValueInput | InputJsonValue
+    constraints?: StringFieldUpdateOperationsInput | string
+    editorial?: StringFieldUpdateOperationsInput | string
+    testcases?: JsonNullValueInput | InputJsonValue
+    codeSnippets?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
+    submission?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
+    solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemCreateManyUserInput = {
@@ -10270,6 +13629,14 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type BookMarkCreateManyUserInput = {
+    id?: string
+    name: string
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type ProblemUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
@@ -10284,6 +13651,7 @@ export namespace Prisma {
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     submission?: SubmissionUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemInBookMarkUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateWithoutUserInput = {
@@ -10300,6 +13668,7 @@ export namespace Prisma {
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     submission?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemInBookMarkUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateManyWithoutUserInput = {
@@ -10384,6 +13753,32 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type BookMarkUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: ProblemInBookMarkUpdateManyWithoutBookMarkNestedInput
+  }
+
+  export type BookMarkUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: ProblemInBookMarkUncheckedUpdateManyWithoutBookMarkNestedInput
+  }
+
+  export type BookMarkUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type SubmissionCreateManyProblemInput = {
     id?: string
     userId: string
@@ -10402,6 +13797,13 @@ export namespace Prisma {
   export type ProblemSolvedCreateManyProblemInput = {
     id?: string
     userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProblemInBookMarkCreateManyProblemInput = {
+    id?: string
+    BookMarkId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10474,6 +13876,27 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ProblemInBookMarkUpdateWithoutProblemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bookMark?: BookMarkUpdateOneRequiredWithoutProblemsNestedInput
+  }
+
+  export type ProblemInBookMarkUncheckedUpdateWithoutProblemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    BookMarkId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemInBookMarkUncheckedUpdateManyWithoutProblemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    BookMarkId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type testCaseResultCreateManySubmissionInput = {
     id?: string
     testCase: number
@@ -10532,6 +13955,34 @@ export namespace Prisma {
     time?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     UpdatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemInBookMarkCreateManyBookMarkInput = {
+    id?: string
+    problemId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProblemInBookMarkUpdateWithoutBookMarkInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problem?: ProblemUpdateOneRequiredWithoutBookmarksNestedInput
+  }
+
+  export type ProblemInBookMarkUncheckedUpdateWithoutBookMarkInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemInBookMarkUncheckedUpdateManyWithoutBookMarkInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

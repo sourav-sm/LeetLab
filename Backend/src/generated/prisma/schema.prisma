@@ -38,6 +38,7 @@ model User {
   problems      Problem[]
   submission    Submission[]
   problemSolved ProblemSolved[]
+  bookmarks     BookMark[]
 }
 
 model Problem {
@@ -56,9 +57,10 @@ model Problem {
   referenceSolutions Json
 
   //relationship
-  user       User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user       User                @relation(fields: [userId], references: [id], onDelete: Cascade)
   submission Submission[]
   solvedBy   ProblemSolved[]
+  bookmarks  ProblemInBookMark[]
 }
 
 model Submission {
@@ -113,4 +115,31 @@ model ProblemSolved {
   problem Problem @relation(fields: [problemId], references: [id], onDelete: Cascade)
 
   @@unique([userId, problemId])
+}
+
+model BookMark {
+  id          String @id @default(uuid())
+  name        String
+  description String
+  userId      String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  problems ProblemInBookMark[]
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([name, userId])
+}
+
+model ProblemInBookMark {
+  id         String   @id @default(uuid())
+  BookMarkId String
+  problemId  String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  bookMark BookMark @relation(fields: [BookMarkId], references: [id], onDelete: Cascade)
+  problem  Problem  @relation(fields: [problemId], references: [id], onDelete: Cascade)
 }
