@@ -9,7 +9,7 @@ ProblemRoutes.post("/create-problems",authMiddleware,checkAdmin,createProblems);
 
 ProblemRoutes.get("/get-all-problems",authMiddleware,getAllProblems);
 
-ProblemRoutes.get("/get-problems/:id",authMiddleware,getProblemById);
+ProblemRoutes.get("/get-problem/:id",authMiddleware,getProblemById);
 
 ProblemRoutes.put('/update-problem/:id',authMiddleware,checkAdmin,updateProblem);
 

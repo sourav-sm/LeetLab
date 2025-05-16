@@ -13,13 +13,15 @@ export const getJudge0LanguageId=(language)=>{
 }
 
 export const submitBatch=async (submissions)=>{
-    const {data}=await axios.post(`${process.env.JUDGE0_API_URL}/submissions/?base64_encoded=false`,{
+    const {data}=await axios.post(`${process.env.JUDGE0_API_URL}/submissions/batch?base64_encoded=false`,{
         submissions
     })
 
     console.log("Submission Result",data);
     return data;
 }
+
+const sleep=(ms)=>new Promise((resolve)=>setTimeout(resolve,ms))
 
 export const pollBatchResults=async(tokens)=>{
     while(true){
@@ -37,6 +39,6 @@ export const pollBatchResults=async(tokens)=>{
         )
 
         if(isAllDome)return results
-        await StylePropertyMap(1000)
+        await sleep(1000);
     }
 }
