@@ -12,7 +12,7 @@ const App=()=>{
         <Routes>
           <Route 
               path="/" 
-              element={authUser? <HomePage/>:LoginPage}/>
+              element={authUser? <HomePage/>:<LoginPage/>}/>
           
           <Route 
               path="/login" 
