@@ -100,17 +100,17 @@ function LoginPage() {
             <button
               type="submit"
               className="btn btn-primary w-full"
-            //  disabled={isSigninUp}
+             disabled={isSigninUp}
             >
-               {/* {isSigninUp ? (
+               {isSigninUp ? (
                 <>
                   <Loader2 className="h-5 w-5 animate-spin" />
                   Loading...
                 </>
               ) : (
                 "Sign in"
-              )} */}
-              Sign In
+              )}
+              
             </button>
           </form>
 
