@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import {Code,Eye,EyeOff,Loader2,Lock,Mail} from "lucide-react"
 import {z} from "zod";
 import AuthImagePattern from "../components/AuthImagePattern";
+import { useAuthStore } from '../store/useAuthStore'
 
 const SignUpSchema=z.object({
     email:z.string().email("Enter a Valid Email"),
@@ -14,6 +15,7 @@ const SignUpSchema=z.object({
 
 function SignUpPage() {
   const [showPassword,setShowPassword]=useState("false");
+  const {signup,isSigninUp}=useAuthStore();
 
   const {register,
           handleSubmit,
@@ -22,6 +24,11 @@ function SignUpPage() {
   })
 
   const onSubmit=async (data)=>{
+    try {
+      await signup(data);
+    } catch (error) {
+      console.error("Signup Failed",error);
+    }
     console.log(data);
   }
     return (

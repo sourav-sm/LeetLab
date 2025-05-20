@@ -2,9 +2,10 @@ import React,{useState} from 'react'
 import { useForm } from 'react-hook-form'
 import {zodResolver} from "@hookform/resolvers/zod"
 import { Link } from 'react-router-dom'
-import {Code,Eye,EyeOff,Loader2,Lock,Mail} from "lucide-react"
+import {Code,CodeSquare,Eye,EyeOff,Loader2,Lock,Mail} from "lucide-react"
 import {z} from "zod";
 import AuthImagePattern from "../components/AuthImagePattern";
+import { useAuthStore } from '../store/useAuthStore'
 
 const LoginSchema=z.object({
     email:z.string().email("Enter a Valid Email"),
@@ -12,6 +13,7 @@ const LoginSchema=z.object({
 })
 
 const LoginPage=()=> {
+  const {isLoggingIn,login}=useAuthStore();
   const [showPassword,setShowPassword]=useState("false");
 
   const {register,handleSubmit,formState:{errors},
@@ -19,6 +21,11 @@ const LoginPage=()=> {
   })
 
   const onSubmit=async (data)=>{
+    try {
+       await login(data);
+    } catch (error) {
+      console.error("Signin Failed",error)
+    }
     console.log(data);
   }
     return (
@@ -100,9 +107,9 @@ const LoginPage=()=> {
             <button
               type="submit"
               className="btn btn-primary w-full"
-             disabled={isSigninUp}
+             disabled={isLoggingIn}
             >
-               {isSigninUp ? (
+               {isLoggingIn ? (
                 <>
                   <Loader2 className="h-5 w-5 animate-spin" />
                   Loading...
