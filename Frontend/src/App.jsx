@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { Routes,Route,Navigate } from "react-router-dom"
+import { Routes,Route,Navigate } from "react-router-dom";
 import {Toaster} from "react-hot-toast";
 import { Loader } from "lucide-react";
 
@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage"
 import LoginPage from "./pages/LoginPage"
 import SignUpPage from "./pages/SignUpPage"
 import { useAuthStore } from "./store/useAuthStore";
+import Layout from "./layout/layout";
 
 
 const App=()=>{
@@ -26,11 +27,17 @@ const App=()=>{
 
   return (
     <div className="flex flex-col items-center justify-start">
-      <Toaster>
+      <Toaster/>
         <Routes>
           <Route 
               path="/" 
-              element={authUser? <HomePage/>:<LoginPage/>}/>
+              element={<Layout/>}/>
+          
+          <Route 
+              index
+              path="/" 
+              element={authUser? <HomePage/>:<Navigate to={"/login"}/>}>
+          </Route>
           
           <Route 
               path="/login" 
@@ -39,11 +46,21 @@ const App=()=>{
           <Route 
               path="/signup" 
               element={!authUser?<SignUpPage/>:<Navigate to={"/"}/>}/>
+              {/* <Route 
+              path="/" 
+              element={<HomePage/>}/>
+          
+          <Route 
+              path="/login" 
+              element={<LoginPage/>}/>
+          
+          <Route 
+              path="/signup" 
+              element={<SignUpPage/>}/> */}
         </Routes>
-      </Toaster>
     </div>
   )
 }
 
-export default App
+export default App;
   

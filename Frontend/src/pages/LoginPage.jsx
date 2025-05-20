@@ -11,7 +11,7 @@ const LoginSchema=z.object({
     password:z.string().min(6,"Password must be atleast of 6 characters")
 })
 
-function LoginPage() {
+const LoginPage=()=> {
   const [showPassword,setShowPassword]=useState("false");
 
   const {register,handleSubmit,formState:{errors},

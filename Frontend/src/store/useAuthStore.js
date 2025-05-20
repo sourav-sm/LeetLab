@@ -2,12 +2,15 @@ import {create} from "zustand";
 import { axiosInstance } from "../lib/axios";
 import toast from "react-hot-toast";
 
+const token=localStorage.getItem('token');
+console.log(token);
+
 export const useAuthStore=create((set)=>({
     authUser:null,
     isSigninUp:false,
     isLoggingIn:false,
     isCheckingAuth:false,
-
+    
     checkAuth:async()=>{
         set({isCheckingAuth:true})
         try {
