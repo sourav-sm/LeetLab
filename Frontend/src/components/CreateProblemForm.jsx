@@ -573,7 +573,19 @@ function CreateProblemForm() {
 }
 
   const onSubmit=async (value)=>{
-    console.log(value);
+    try {
+      setIsLoading(true);
+      const res=await axiosInstance.post("/problems/create-problems",value);
+      console.log(res.data);
+      toast.success(res.data.message||"Problem Created Successfully")
+      navigation("/");
+    } catch (error) {
+      console.log(error);
+      toast.error("Error creating problem")
+    }
+    finally{
+      setIsLoading(false)
+    }
   }
   return (
     <div className='container mx-auto py-8 px-4 max-w-7xl'>
