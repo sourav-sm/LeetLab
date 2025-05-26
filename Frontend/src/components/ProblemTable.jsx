@@ -1,18 +1,23 @@
 import React, { useMemo, useState } from 'react'
 import { useAuthStore } from '../store/useAuthStore' 
 import { Link } from 'react-router-dom'
-
 import { Bookmark,PencilIcon,Trash,TrashIcon,Plug, Plus } from 'lucide-react';
-import CreateBookMark from './CreateBookMark';
-import AddToBookMark from './AddToBookMark';
+import {useActions} from "../store/useActions";
+import CreateBookmarkModal from "./CreateBookmarkModal";
+import { useBookmarkStore } from "../store/useBookMarkStore";
+import AddToBookmarkModel from "./AddToBookMark"
 
 function ProblemTable({problems}) {
     const {authUser}=useAuthStore();
+    const { onDeleteProblem } = useActions();
+    const { createBookmark } = useBookmarkStore();
     const [search,setSearch]=useState("");
     const [difficulty,setDifficulty]=useState("ALL");
     const [selectedTag,setSelectedTag]=useState("ALL");
     const [currentPage,setCurrentPage]=useState(1);
-    
+    const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+    const [isAddToBookmarkModalOpen, setIsAddToBookmarkModalOpen] = useState(false);
+    const [selectedProblemId, setSelectedProblemId] = useState(null);
 
     const allTags=useMemo(()=>{
         if(!Array.isArray(problems))return [];
@@ -38,6 +43,19 @@ function ProblemTable({problems}) {
 
 
     const difficulties=["EASY","MEDIUM","HARD"];
+
+    const handleDelete = (id) => {
+    onDeleteProblem(id);
+  };
+
+  const handleCreateBookmark = async (data) => {
+    await createBookmark(data);
+  };
+
+  const handleAddToBookmark = (problemId) => {
+    setSelectedProblemId(problemId);
+    setIsAddToBookmarkModalOpen(true);
+  };
 
   return (
      <div className="w-full max-w-6xl mx-auto mt-10">
@@ -146,7 +164,7 @@ function ProblemTable({problems}) {
                                                 </div>
                                             )}
                                          <button className="btn btn-sm btn-outline flex gap-2 items-center"
-                                             onClick={() => handleAddToPlaylist(problem.id)}
+                                             onClick={() => handleAddToBookmark(problem.id)}
                                         >
                                                 <Bookmark className="w-4 h-4" />
                                             <span className="hidden sm:inline">Save to Playlist</span>
@@ -187,17 +205,17 @@ function ProblemTable({problems}) {
         </button>
       </div>
         
-        <CreateBookMark
-           
-           onClose={()=>setIsCreateModalOpen(false)}
-           onSubmit={hand}
-        />
-
-        <AddToBookMark
-         isOpen={}
-         onClose={()=>setIs}
-         problemId={selectedProblemId}
-        />
+          <CreateBookmarkModal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
+        onSubmit={handleCreateBookmark}
+      />
+      
+      <AddToBookmarkModel
+        isOpen={isAddToBookmarkModalOpen}
+        onClose={() => setIsAddToBookmarkModalOpen(false)}
+        problemId={selectedProblemId}
+      />
     </div>
   )
 }

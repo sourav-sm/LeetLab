@@ -26,7 +26,7 @@ app.get("/",(req,res)=>{
 app.use("/api/v1/auth",authRoutes);
 app.use("/api/v1/problems",ProblemRoutes);
 app.use("/api/v1/excute-code",executionRoute);
-app.use("/api/v1/bookmarks",bookMarkRoutes);
+app.use("/api/v1/bookmark",bookMarkRoutes);
 
 
 app.listen(port,()=>{

@@ -49,8 +49,8 @@ const App=()=>{
               path="/signup" 
               element={!authUser?<SignUpPage/>:<Navigate to={"/"}/>}/>
           
-          <Route path="/problem/:id"/>
-             element={authUser?<ProblemPage/>:<Navigate to={"/login"}/>}
+          <Route path="/problem/:id"
+             element={authUser?<ProblemPage/>:<Navigate to={"/login"}/>}/>
           <Route element={<AdminRoute/>}>
             <Route
              path="/add-problem"
