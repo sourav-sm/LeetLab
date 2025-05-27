@@ -35,7 +35,8 @@ export const createProblems=async(req,res)=>{
                 stdin:input,
                 expected_output:output,
             }));
-
+      console.log(submitions);
+      console.log(typeof(submitions));
             const submitionsResult=await submitBatch(submitions);
             const tokens=submitionsResult.map((res)=>res.token);
             const results=await pollBatchResults(tokens);

@@ -17,7 +17,7 @@ const CreateBookmarkModal=({isOpen,onClose,onSubmit})=> {
    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-base-100 rounded-lg shadow-xl w-full max-w-md">
         <div className="flex justify-between items-center p-4 border-b border-base-300">
-          <h3 className="text-xl font-bold">Create New Playlist</h3>
+          <h3 className="text-xl font-bold">Create New Bookmark</h3>
           <button onClick={onClose} className="btn btn-ghost btn-sm btn-circle">
             <X className="w-5 h-5" />
           </button>
@@ -26,13 +26,13 @@ const CreateBookmarkModal=({isOpen,onClose,onSubmit})=> {
         <form onSubmit={handleSubmit(handleFormSubmit)} className="p-6 space-y-4">
           <div className="form-control">
             <label className="label">
-              <span className="label-text font-medium">Playlist Name</span>
+              <span className="label-text font-medium">Bookmark Name</span>
             </label>
             <input
               type="text"
               className="input input-bordered w-full"
-              placeholder="Enter playlist name"
-              {...register('name', { required: 'Playlist name is required' })}
+              placeholder="Enter Bookmark name"
+              {...register('name', { required: 'Bookmark name is required' })}
             />
             {errors.name && (
               <label className="label">
@@ -47,7 +47,7 @@ const CreateBookmarkModal=({isOpen,onClose,onSubmit})=> {
             </label>
             <textarea
               className="textarea textarea-bordered h-24"
-              placeholder="Enter playlist description"
+              placeholder="Enter Bookmark description"
               {...register('description')}
             />
           </div>
@@ -57,7 +57,7 @@ const CreateBookmarkModal=({isOpen,onClose,onSubmit})=> {
               Cancel
             </button>
             <button type="submit" className="btn btn-primary">
-              Create Playlist
+              Create Bookmark
             </button>
           </div>
         </form>

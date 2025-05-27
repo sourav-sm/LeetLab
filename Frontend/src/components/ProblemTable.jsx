@@ -59,7 +59,7 @@ function ProblemTable({problems}) {
 
   return (
      <div className="w-full max-w-6xl mx-auto mt-10">
-      {/* Header with Create Playlist Button */}
+      {/* Header with Create Bookmark Button */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Problems</h2>
         <button
@@ -67,7 +67,7 @@ function ProblemTable({problems}) {
           onClick={() => setIsCreateModalOpen(true)}
         >
           <Plus className="w-4 h-4" />
-          Create Playlist
+          Create Bookmark
         </button>
       </div>
 
@@ -119,9 +119,11 @@ function ProblemTable({problems}) {
                 {
                     paginatedProblems.length>0?(
                     paginatedProblems.map((problem)=>{
-                        const isSolved=problem.solvedBy.some((user)=>user.userId===authUser?.id);
+                        const isSolved = (problem.solvedBy??[]).some(
+                              (user) => user.userId === authUser?.id
+                           );
                         return (
-                            <tr>
+                            <tr key={problem.id}>
                                 <td>
                                     <input type="checkbox" checked={isSolved} className='checkbox checkbox-sm'/>
                                 </td>
@@ -167,7 +169,7 @@ function ProblemTable({problems}) {
                                              onClick={() => handleAddToBookmark(problem.id)}
                                         >
                                                 <Bookmark className="w-4 h-4" />
-                                            <span className="hidden sm:inline">Save to Playlist</span>
+                                            <span className="hidden sm:inline">Save to Bookmark</span>
                                             </button>   
                                     </div>
                                 </td>

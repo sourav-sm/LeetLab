@@ -3,7 +3,7 @@ import {X,Plus,Loader} from "lucide-react"
 import { useBookmarkStore } from '../store/useBookMarkStore'
 
 const AddToBookmarkModel=({isOpen,onClose,problemId})=> {
-    const {bookMarks,getAllBookmark, addProblemToBookmark,isLoading}=useBookmarkStore();
+    const {bookMarks=[],getAllBookmark, addProblemToBookmark,isLoading}=useBookmarkStore();
     const [selectedBookmark,setSelectedBookmark]=useState('');
    
     useEffect(()=>{
@@ -25,7 +25,7 @@ const AddToBookmarkModel=({isOpen,onClose,problemId})=> {
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-base-100 rounded-lg shadow-xl w-full max-w-md">
         <div className="flex justify-between items-center p-4 border-b border-base-300">
-          <h3 className="text-xl font-bold">Add to Playlist</h3>
+          <h3 className="text-xl font-bold">Add to Bookmark</h3>
           <button onClick={onClose} className="btn btn-ghost btn-sm btn-circle">
             <X className="w-5 h-5" />
           </button>
@@ -34,15 +34,15 @@ const AddToBookmarkModel=({isOpen,onClose,problemId})=> {
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div className="form-control">
             <label className="label">
-              <span className="label-text font-medium">Select Playlist</span>
+              <span className="label-text font-medium">Select Bookmark</span>
             </label>
             <select
               className="select select-bordered w-full"
               value={selectedBookmark}
-              onChange={(e) => setSelectedPlaylist(e.target.value)}
+              onChange={(e) => setSelectedBookmark(e.target.value)}
               disabled={isLoading}
             >
-              <option value="">Select a playlist</option>
+              <option value="">Select a bookmark</option>
               {bookMarks.map((bookMark) => (
                 <option key={bookMark.id} value={bookMark.id}>
                   {bookMark.name}
@@ -61,7 +61,7 @@ const AddToBookmarkModel=({isOpen,onClose,problemId})=> {
               disabled={!selectedBookmark || isLoading}
             >
               {isLoading ? <Loader className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />}
-              Add to Playlist
+              Add to Bookmark
             </button>
           </div>
         </form>
