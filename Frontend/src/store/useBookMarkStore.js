@@ -14,10 +14,16 @@ export const useBookmarkStore=create((set,get)=>({
             const response=await axiosInstance.post("/bookmark/create-bookmark",
                 BookmarkData
             )
+            console.log("response",response);
 
-            set((state)=>({
-                bookMarks:[...state.bookMarks,response.data.bookMarks]
+            // set((state)=>({
+            //     bookMarks:[...state.bookMarks,response.data.bookMarks]
+            // }));
+
+            set((state) => ({
+               bookMarks: [...state.bookMarks, response.data.bookmark] // assuming singular
             }));
+
 
             toast.success("BookMark Created successfully");
             return response.data.bookMarks

@@ -43,11 +43,18 @@ const AddToBookmarkModel=({isOpen,onClose,problemId})=> {
               disabled={isLoading}
             >
               <option value="">Select a bookmark</option>
-              {bookMarks.map((bookMark) => (
+              console.log("bookmarks",bookMarks);
+              {/* {bookMarks.map((bookMark) => (
                 <option key={bookMark.id} value={bookMark.id}>
                   {bookMark.name}
                 </option>
-              ))}
+              ))} */}
+              {bookMarks.filter(Boolean).map((bookMark) => (
+  <option key={bookMark.id} value={bookMark.id}>
+    {bookMark.name}
+  </option>
+))}
+
             </select>
           </div>
 

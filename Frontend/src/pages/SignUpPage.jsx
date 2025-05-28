@@ -141,7 +141,7 @@ function SignUpPage() {
                   Loading...
                 </>
               ) : (
-                "Sign in"
+                "Sign Up"
               )}
             </button>
           </form>

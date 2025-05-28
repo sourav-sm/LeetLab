@@ -70,7 +70,6 @@ const ProblemPage = () => {
     }
   }, [activeTab, id]);
 
-  console.log("submission", submissions);
 
   const handleLanguageChange = (e) => {
     const lang = e.target.value;
@@ -162,6 +161,7 @@ const ProblemPage = () => {
           </div>
         );
       case "submissions":
+        console.log("submissions",submissions)
         return (
           <SubmissionsList
             submissions={submissions}
@@ -297,7 +297,7 @@ const ProblemPage = () => {
             </div>
           </div>
 
-          <div className="card bg-base-100 shadow-xl">
+          <div className="card bg-base-100 shadow-2xl">
             <div className="card-body p-0">
               <div className="tabs tabs-bordered">
                 <button className="tab tab-active gap-2">

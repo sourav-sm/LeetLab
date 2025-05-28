@@ -2,16 +2,17 @@ import React from "react";
 import {CheckCircle2,XCircle,Clock,MemoryStick as Memory} from 'lucide-react'
 
 const SubmissionResult=({submission})=>{
-    const memoryArr=JSON.parse(submission.Memory || []);
-    const timeArr=JSON.parse(submission.time || []);
+  
+    // const memoryArr=JSON.parse(submission.Memory || []);
+    // const timeArr=JSON.parse(submission.time || []);
 
-    const avgMemory=memoryArr
-        .map(m=>parseFloat(m))
-        .reduce((a,b)=>a+b,0)/memoryArr.length;
+    // const avgMemory=memoryArr
+    //     .map(m=>parseFloat(m))
+    //     .reduce((a,b)=>a+b,0)/memoryArr.length;
 
-    const avgTime=timeArr
-      .map(m=>parseFloat(m))
-        .reduce((a,b)=>a+b,0)/timeArr.length
+    // const avgTime=timeArr
+    //   .map(m=>parseFloat(m))
+    //     .reduce((a,b)=>a+b,0)/timeArr.length
 
     const passedTests=submission.testCases.filter(tc=>tc.passed).length;
     const totalTests=submission.testCases.length;
@@ -48,7 +49,7 @@ const SubmissionResult=({submission})=>{
               Avg. Runtime
             </h3>
             <div className="text-lg font-bold">
-              {avgTime.toFixed(3)} s
+              {/* {avgTime.toFixed(3)} s */}0s
             </div>
           </div>
         </div>
@@ -60,7 +61,7 @@ const SubmissionResult=({submission})=>{
               Avg. Memory
             </h3>
             <div className="text-lg font-bold">
-              {avgMemory.toFixed(0)} KB
+              {/* {avgMemory.toFixed(0)} KB */}0KB
             </div>
           </div>
         </div>
