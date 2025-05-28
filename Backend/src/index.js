@@ -7,6 +7,7 @@ import authRoutes from "./routes/auth.routes.js";
 import ProblemRoutes from "./routes/problem.routes.js";
 import executionRoute from "./routes/execteCode.Route.js";
 import bookMarkRoutes from "./routes/bookMark.routes.js";
+import submissionRoutes from "./routes/submission.routes.js"
 
 const app=express();
 dotenv.config();
@@ -27,6 +28,8 @@ app.use("/api/v1/auth",authRoutes);
 app.use("/api/v1/problems",ProblemRoutes);
 app.use("/api/v1/execute-code",executionRoute);
 app.use("/api/v1/bookmark",bookMarkRoutes);
+app.use("/api/v1/bookmark",bookMarkRoutes);
+app.use("/api/v1/submission",submissionRoutes);
 
 
 app.listen(port,()=>{

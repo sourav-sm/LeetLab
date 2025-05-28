@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
@@ -14,133 +8,118 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum UserRole{
+model User {
+  id            String          @id @default(uuid())
+  name          String?
+  email         String          @unique
+  image         String?
+  role          UserRole        @default(USER)
+  password      String
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  bookmarks     BookMark[]
+  problems      Problem[]
+  problemSolved ProblemSolved[]
+  submission    Submission[]
+}
+
+model Problem {
+  id                 String              @id @default(uuid())
+  title              String
+  description        String
+  difficulty         Difficulty
+  tags               String[]
+  userId             String
+  examples           Json
+  constraints        String
+  editorial          String
+  testcases          Json
+  codeSnippets       Json
+  referenceSolutions Json
+  user               User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bookmarks          ProblemInBookMark[]
+  solvedBy           ProblemSolved[]
+  submission         Submission[]
+}
+
+model Submission {
+  id            String           @id @default(uuid())
+  userId        String
+  problemId     String
+  sourceCode    Json
+  stdin         String?
+  stdout        String?
+  stderr        String?
+  compileOutput String?
+  status        String
+  memory        String?
+  time          String?
+  createdAt     DateTime         @default(now())
+  UpdatedAt     DateTime         @updatedAt
+  problem       Problem          @relation(fields: [problemId], references: [id], onDelete: Cascade)
+  user          User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  testCases     testCaseResult[]
+}
+
+model testCaseResult {
+  id            String     @id @default(uuid())
+  submissionId  String
+  testCase      Int
+  passed        Boolean
+  stdout        String?
+  expected      String
+  stderr        String?
+  compileOutput String?
+  status        String
+  memory        String?
+  time          String?
+  createdAt     DateTime   @default(now())
+  UpdatedAt     DateTime   @updatedAt
+  submission    Submission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+}
+
+model ProblemSolved {
+  id        String   @default(uuid())
+  userId    String
+  problemId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  problem   Problem  @relation(fields: [problemId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, problemId])
+}
+
+model BookMark {
+  id          String              @id @default(uuid())
+  name        String
+  description String
+  userId      String
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  user        User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  problems    ProblemInBookMark[]
+
+  @@unique([name, userId])
+}
+
+model ProblemInBookMark {
+  id         String   @id @default(uuid())
+  BookMarkId String
+  problemId  String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  bookMark   BookMark @relation(fields: [BookMarkId], references: [id], onDelete: Cascade)
+  problem    Problem  @relation(fields: [problemId], references: [id], onDelete: Cascade)
+}
+
+enum UserRole {
   ADMIN
   USER
 }
 
-enum Difficulty{
+enum Difficulty {
   EASY
   MEDIUM
   HARD
-}
-
-model User{
-  id            String           @id @default(uuid())
-  name          String?     
-  email         String           @unique
-  image         String?     
-  role          UserRole         @default(USER)
-  password      String     
-  createdAt     DateTime         @default(now())
-  updatedAt     DateTime         @updatedAt
-
-  problems      Problem[]
-  submission    Submission[]
-  problemSolved ProblemSolved[]
-  bookmarks     BookMark[]
-}
-
-model Problem{
- id             String              @id @default(uuid())
- title          String
- description    String
- difficulty     Difficulty
- tags           String[]
- userId         String
- examples       Json
- constraints    String
- editorial      String
- 
- testcases          Json
- codeSnippets       Json
- referenceSolutions Json
-
- //relationship
- user             User                  @relation(fields: [userId],references: [id],onDelete: Cascade)
- submission       Submission[]
- solvedBy         ProblemSolved[]
- bookmarks        ProblemInBookMark[]
-}
-
-model Submission{
-  id                String                @id @default(uuid())
-  userId            String
-  problemId         String
-  sourceCode        Json
-  stdin             String?
-  stdout            String?
-  stderr            String?
-  compileOutput     String?
-  status            String
-  memory            String?
-  time              String?
-
-  createdAt          DateTime                @default(now())
-  UpdatedAt          DateTime                @updatedAt
-
-  user               User                     @relation(fields: [userId],references: [id],onDelete: Cascade)
-  problem            Problem                  @relation(fields: [problemId], references: [id],onDelete: Cascade)
-
-  testCases          testCaseResult[]
-
-}
-
-model testCaseResult{
-  id                   String                  @id @default(uuid())
-  submissionId         String
-  testCase             Int
-  passed               Boolean
-  stdout               String?
-  expected             String
-  stderr               String?
-  compileOutput        String?
-  status               String
-  memory               String?
-  time                 String?
-
-  createdAt            DateTime                @default(now())
-  UpdatedAt            DateTime                @updatedAt
-
-  submission           Submission               @relation(fields: [submissionId],references: [id],onDelete: Cascade)
-}
-
-model ProblemSolved{
-  id                    String                  @default(uuid())
-  userId                String               
-  problemId             String               
-  createdAt             DateTime                @default(now())
-  updatedAt             DateTime                @updatedAt
-
-  user                  User                    @relation(fields: [userId],references: [id],onDelete: Cascade)
-  problem               Problem                 @relation(fields: [problemId], references: [id],onDelete: Cascade)
-
-  @@unique([userId,problemId])
-
-}
-
-model BookMark{
-  id            String        @id@default(uuid())
-  name          String
-  description   String
-  userId        String
-  
-  createdAt      DateTime       @default(now())
-  updatedAt      DateTime       @updatedAt
-
-  problems        ProblemInBookMark[]
-
-  user          User            @relation(fields: [userId],references: [id],onDelete: Cascade)
-  @@unique([name,userId])
-}
-
-model ProblemInBookMark{
-  id              String          @id @default(uuid())
-  BookMarkId      String
-  problemId       String
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
-
-  bookMark        BookMark          @relation(fields: [BookMarkId],references: [id],onDelete: Cascade)
-  problem         Problem           @relation(fields: [problemId],references: [id],onDelete: Cascade)
 }
