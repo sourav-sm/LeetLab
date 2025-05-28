@@ -11,6 +11,7 @@ import Layout from "./layout/layout";
 import AdminRoute from "./components/AdminRoute";
 import AddProblem from "./pages/AddProblem";
 import ProblemPage from "./pages/ProblemPage";
+import Profile from "./pages/Profile";
 
 
 const App=()=>{
@@ -56,7 +57,9 @@ const App=()=>{
              path="/add-problem"
              element={authUser?<AddProblem/>:<Navigate to="/"/>}
             />
-          </Route>    
+          </Route>
+
+          <Route path="/profile" element={authUser ? <Profile/>:<Navigate to={"/login"}/>}/>    
          </Routes>
     </div>
   )

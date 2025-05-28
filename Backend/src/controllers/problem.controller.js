@@ -289,7 +289,7 @@ export const deleteProblemById=async(req,res)=>{
 
 export const getAllProblemsSolvedByUser=async(req,res)=>{
    try {
-    const problems=await db.findMany({
+    const problems=await db.problem.findMany({
         where:{
             solvedBy:{
                 some:{
