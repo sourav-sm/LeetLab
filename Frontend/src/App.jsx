@@ -34,11 +34,10 @@ const App=()=>{
     <div className="flex flex-col items-center justify-start">
       <Toaster/>
          <Routes>
-           <Route 
-             path="/" 
-             element={!authUser ? <LandingPage /> : <Navigate to="/home" />}
-           />
-
+          <Route 
+            path="/" 
+            element={!authUser ? <LandingPage /> : <Navigate to="/home" />}
+          />
           <Route 
             path="/" 
             element={authUser ? <Layout /> : <Navigate to="/" />}
@@ -51,6 +50,7 @@ const App=()=>{
               <Route path="add-problem" element={<AddProblem />} />
             </Route>
           </Route>
+        
           <Route 
             path="/login" 
             element={!authUser ? <LoginPage /> : <Navigate to="/home" />}
@@ -59,7 +59,7 @@ const App=()=>{
             path="/signup" 
             element={!authUser ? <SignUpPage /> : <Navigate to="/home" />}
           />
-        </Routes>
+      </Routes>
     </div>
   )
 }
