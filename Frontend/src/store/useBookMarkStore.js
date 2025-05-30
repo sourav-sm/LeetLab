@@ -11,18 +11,14 @@ export const useBookmarkStore=create((set,get)=>({
     createBookmark:async (BookmarkData)=>{
         try {
             set({isLoading:true});
+            console.log("bookmark data",BookmarkData);
             const response=await axiosInstance.post("/bookmark/create-bookmark",
                 BookmarkData
             )
-            console.log("response",response);
-
-            // set((state)=>({
-            //     bookMarks:[...state.bookMarks,response.data.bookMarks]
-            // }));
 
             set((state) => ({
-               bookMarks: [...state.bookMarks, response.data.bookmark] // assuming singular
-            }));
+              bookMarks: [...state.bookMarks, response.data.bookMark],
+           }));
 
 
             toast.success("BookMark Created successfully");
@@ -40,7 +36,8 @@ export const useBookmarkStore=create((set,get)=>({
         try {
             set({isLoading:true})
             const response=await axiosInstance.get("/bookmark");
-            set({bookMarks:response.data.bookMarks});
+            console.log("Raw response from /bookmark:", response.data);
+            set({bookMarks:response.data.bookmarks || []});
         } catch (error) {
             console.error("Error in Getting all Bookmark",error);
             toast.error("Failed to Get all Bookmark");
@@ -109,8 +106,9 @@ export const useBookmarkStore=create((set,get)=>({
 
     deleteBookmark:async(bookMarkId)=>{
         try {
+            console.log("bookmark id",bookMarkId);
             set({isLoading:true})
-            await axiosInstance.post(`/bookmark/${bookMarkId}`);
+            await axiosInstance.delete(`/bookmark/${bookMarkId}`);
             set((state)=>({
                 bookMarks:state.bookMarks.filter((p)=>p.id!==bookMarkId),
             }));

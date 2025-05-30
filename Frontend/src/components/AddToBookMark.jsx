@@ -3,8 +3,10 @@ import {X,Plus,Loader} from "lucide-react"
 import { useBookmarkStore } from '../store/useBookMarkStore'
 
 const AddToBookmarkModel=({isOpen,onClose,problemId})=> {
-    const {bookMarks=[],getAllBookmark, addProblemToBookmark,isLoading}=useBookmarkStore();
+    const {bookMarks,getAllBookmark, addProblemToBookmark,isLoading}=useBookmarkStore();
     const [selectedBookmark,setSelectedBookmark]=useState('');
+    
+    console.log("bookMarks",bookMarks);
    
     useEffect(()=>{
         if(isOpen){
@@ -12,12 +14,17 @@ const AddToBookmarkModel=({isOpen,onClose,problemId})=> {
         }
     },[isOpen]);
 
+    useEffect(() => {
+        console.log("bookMarks bhbhbb :", bookMarks); // Debug output
+    }, [bookMarks]);
+
     const handleSubmit=async (e)=>{
         e.preventDefault();
         if(!selectedBookmark)return;
 
         await addProblemToBookmark(selectedBookmark,[problemId]);
-        onclose();
+        // onclose();
+        onClose();
     };
 
     if(!isOpen) return null;
@@ -43,17 +50,12 @@ const AddToBookmarkModel=({isOpen,onClose,problemId})=> {
               disabled={isLoading}
             >
               <option value="">Select a bookmark</option>
-              console.log("bookmarks",bookMarks);
-              {/* {bookMarks.map((bookMark) => (
-                <option key={bookMark.id} value={bookMark.id}>
-                  {bookMark.name}
-                </option>
-              ))} */}
-              {bookMarks.filter(Boolean).map((bookMark) => (
+              {(Array.isArray(bookMarks) ? bookMarks : []).map((bookMark) => (
   <option key={bookMark.id} value={bookMark.id}>
     {bookMark.name}
   </option>
 ))}
+
 
             </select>
           </div>

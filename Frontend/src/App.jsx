@@ -12,6 +12,7 @@ import AdminRoute from "./components/AdminRoute";
 import AddProblem from "./pages/AddProblem";
 import ProblemPage from "./pages/ProblemPage";
 import Profile from "./pages/Profile";
+import LandingPage from "./pages/LandingPage";
 
 
 const App=()=>{
@@ -32,35 +33,33 @@ const App=()=>{
   return (
     <div className="flex flex-col items-center justify-start">
       <Toaster/>
-        <Routes>
-          <Route 
-              path="/" 
-              element={<Layout/>}>
-          
-          <Route 
-              index
-              element={authUser? <HomePage/>:<Navigate to={"/login"}/>}/>
-          </Route>
-          
-          <Route 
-              path="/login" 
-              element={!authUser?<LoginPage/>:<Navigate to={"/"}/>}/>
-          
-          <Route 
-              path="/signup" 
-              element={!authUser?<SignUpPage/>:<Navigate to={"/"}/>}/>
-          
-          <Route path="/problem/:id"
-             element={authUser?<ProblemPage/>:<Navigate to={"/login"}/>}/>
-          <Route element={<AdminRoute/>}>
-            <Route
-             path="/add-problem"
-             element={authUser?<AddProblem/>:<Navigate to="/"/>}
-            />
-          </Route>
+         <Routes>
+           <Route 
+             path="/" 
+             element={!authUser ? <LandingPage /> : <Navigate to="/home" />}
+           />
 
-          <Route path="/profile" element={authUser ? <Profile/>:<Navigate to={"/login"}/>}/>    
-         </Routes>
+          <Route 
+            path="/" 
+            element={authUser ? <Layout /> : <Navigate to="/" />}
+          >
+            <Route path="home" element={<HomePage />} />
+            <Route path="problem/:id" element={<ProblemPage />} />
+            <Route path="profile" element={<Profile />} />
+        
+            <Route element={<AdminRoute />}>
+              <Route path="add-problem" element={<AddProblem />} />
+            </Route>
+          </Route>
+          <Route 
+            path="/login" 
+            element={!authUser ? <LoginPage /> : <Navigate to="/home" />}
+          />
+          <Route 
+            path="/signup" 
+            element={!authUser ? <SignUpPage /> : <Navigate to="/home" />}
+          />
+        </Routes>
     </div>
   )
 }

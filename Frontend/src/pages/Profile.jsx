@@ -105,10 +105,8 @@ const Profile=()=>{
       </div>
 <div>
 
-<ProfileSubmission/>
-     
+      <ProfileSubmission/>
       <ProblemSolvedByUser/>
-
       <BookMarkProfile/>
 </div>
       
