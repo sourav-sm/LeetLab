@@ -15,7 +15,7 @@ const port=process.env.PORT;
 
 app.use(cors({
     // origin:"http://localhost:5173",
-    origin:"https://www.algopundit.com/",
+    origin:"https://www.algopundit.com",
     credentials:true
 }))
 app.use(express.json());
