@@ -4,9 +4,11 @@ import { Outlet } from 'react-router-dom'
 
 function Layout() {
   return (
-    <div>
-        <Navbar/>
-        <Outlet/>
+     <div className="min-h-screen w-full">
+      <Navbar />
+      <main className="max-w-7xl mx-auto w-full"> 
+        <Outlet />
+      </main>
     </div>
   )
 }

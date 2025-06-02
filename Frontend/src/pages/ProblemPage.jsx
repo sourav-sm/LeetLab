@@ -1,4 +1,4 @@
-import React ,{useState,useEffect}from 'react'
+import React ,{useState,useEffect,useRef}from 'react'
 import { Link,useParams } from 'react-router-dom'
 import { Editor } from '@monaco-editor/react';
 import {
@@ -37,9 +37,9 @@ const ProblemPage = () => {
     submissionCount,
   } = useSubmissionStore();
 
-  const [code, setCode] = useState("");
+ const [code, setCode] = useState("");
   const [activeTab, setActiveTab] = useState("description");
-  const [selectedLanguage, setSelectedLanguage] = useState("javascript");
+  const [selectedLanguage, setSelectedLanguage] = useState("JAVASCRIPT");
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [testcases, setTestCases] = useState([]);
 
@@ -91,7 +91,7 @@ const ProblemPage = () => {
 
   if (isProblemLoading || !problem) {
     return (
-      <div className="flex items-center justify-center h-screen bg-base-200">
+      <div className="flex items-center justify-center h-screen bg-base-200 w-full">
         <div className="card bg-base-100 p-8 shadow-xl">
           <span className="loading loading-spinner loading-lg text-primary"></span>
           <p className="mt-4 text-base-content/70">Loading problem...</p>
@@ -104,7 +104,7 @@ const ProblemPage = () => {
     switch (activeTab) {
       case "description":
         return (
-          <div className="prose max-w-none">
+          <div className="prose max-w-none ">
             <p className="text-lg mb-6">{problem.description}</p>
 
             {problem.examples && (
@@ -196,7 +196,7 @@ const ProblemPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-base-300 to-base-200 max-w-7xl w-full">
+     <div className="min-h-screen bg-gradient-to-br from-base-300 to-base-200 max-w-7xl w-full">
       <nav className="navbar bg-base-100 shadow-lg px-4">
         <div className="flex-1 gap-2">
           <Link to={"/"} className="flex items-center gap-2 text-primary">
@@ -305,7 +305,7 @@ const ProblemPage = () => {
                   Code Editor
                 </button>
               </div>
-
+          
               <div className="h-[600px] w-full">
                 <Editor
                   height="100%"
