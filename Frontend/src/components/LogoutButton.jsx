@@ -1,11 +1,14 @@
 import React from 'react'
 import { useAuthStore } from '../store/useAuthStore'
+import { useNavigate } from 'react-router-dom'
 
 function LogoutButton({children}) {
-  const {logout}=useAuthStore()
+  const {logout}=useAuthStore();
+  const navigate=useNavigate();
 
   const onLogout=async()=>{
     await logout();
+    navigate("/");
   }
 
   return (
