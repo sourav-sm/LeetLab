@@ -40,7 +40,8 @@ export const register=async (req,res)=>{
 
         res.cookie("jwt",token,{
             httpsOnly:true,
-            sameSite:"strict",
+            // sameSite:"strict",
+            sameSite:"None",//as frontend on vercel and backend on render
             secure:process.env.NODE_ENV!="development",
             maxAge:1000*60*60*24*7//7 days
         })
@@ -94,7 +95,8 @@ export const login=async (req,res)=>{
 
         res.cookie("jwt",token,{
             httpsOnly:true,
-            sameSite:"strict",
+            // sameSite:"strict",
+            sameSite:"None",//as frontend on vercel and backend on render
             secure:process.env.NODE_ENV!="development",
             maxAge:7*24*60*60*1000//7days
         })
