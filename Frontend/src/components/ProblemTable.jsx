@@ -119,9 +119,8 @@ function ProblemTable({problems}) {
                 {
                     paginatedProblems.length>0?(
                     paginatedProblems.map((problem)=>{
-                        const isSolved = (problem.solvedBy??[]).some(
-                              (user) => user.userId === authUser?.id
-                           );
+                        const isSolved = problem.userId === authUser?.id;
+                         
                         return (
                             <tr key={problem.id}>
                                 <td>

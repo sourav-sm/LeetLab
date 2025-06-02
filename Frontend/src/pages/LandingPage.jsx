@@ -3,6 +3,7 @@ import { Button } from "../components/ui/Button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/Card"
 import { CheckCircle, Code, Trophy, Users, BookOpen, Zap, Github, Twitter, Linkedin } from "lucide-react"
 import useStore from "../store/useStore"
+import {TypeAnimation} from 'react-type-animation'
 
 function App() {
   const { isMenuOpen, setMenuOpen } = useStore()
@@ -50,7 +51,16 @@ function App() {
                     New Features
                   </span>
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Master Algorithms & Ace Your Coding Interviews
+                    <TypeAnimation
+                     sequence={[
+                         'Master Algorithms & Ace Your Coding Interviews', 
+                         1000,
+                       ]}
+                       wrapper="span"
+                       cursor={true}
+                       repeat={Infinity}
+                   />
+                    {/* Master Algorithms & Ace Your Coding Interviews */}
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
                     AlgoPundit helps you prepare for technical interviews with thousands of coding challenges, real-time
@@ -91,7 +101,7 @@ function App() {
                     <div className="ml-2 text-xs font-medium">Two Sum - AlgoPundit</div>
                   </div>
                   <div className="p-4 text-sm">
-                    <pre className="overflow-x-auto rounded bg-muted p-4 text-xs">
+                    <pre className="overflow-x-auto rounded bg-black p-4 text-xs text-green-600">
                       <code className="language-javascript">
                         {`function twoSum(nums, target) {
   const map = new Map();

@@ -9,18 +9,19 @@ import ProfileSubmission from "../components/ProfileSubmission";
 const Profile=()=>{
     const {authUser}=useAuthStore();
     return (
-    <div className="min-h-screen bg-base-200 flex flex-col items-center justify-center py-10 px-4 md:px-8 w-full">
+    // <div className="min-h-screen bg-base-200 flex flex-col items-center justify-center py-10 px-4 md:px-8 w-full">
+    <div className="min-h-screen bg-gradient-to-br from-base-300 to-base-200 max-w-7xl w-full">
       {/* Header with back button */}
-      <div className="flex flex-row justify-between items-center w-full mb-6">
+      <div className="flex flex-row justify-between items-center w-full mb-6 pt-5 ml-5">
         <div className="flex items-center gap-3">
           <Link to={"/"} className="btn btn-circle btn-ghost">
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-7 h-7" />
           </Link>
-          <h1 className="text-3xl font-bold text-primary">Profile</h1>
+          <h1 className="text-3xl font-bold text-">Profile</h1>
         </div>
       </div>
       
-      <div className="w-full max-w-4xl mx-auto">
+      <div className="w-full max-w-6xl mx-auto">
         {/* Profile Card */}
         <div className="card bg-base-100 shadow-xl">
           <div className="card-body">
@@ -28,15 +29,14 @@ const Profile=()=>{
             <div className="flex flex-col md:flex-row items-center gap-6">
               {/* Avatar */}
               <div className="avatar placeholder">
-                <div className="bg-neutral text-neutral-content rounded-full w-24 h-24 ring ring-primary ring-offset-base-100 ring-offset-2">
-                  {authUser.image ? (
-                    <img src={authUser?.image || "https://avatar.iran.liara.run/public/boy"} alt={authUser.name} />
-                  ) : (
-                    <span className="text-3xl">{authUser.name ? authUser.name.charAt(0) : "U"}</span>
-                  )}
+                <div className="rounded-full w-20 h-20 object-cover border-2 border-orange-500">
+                  <img
+                      src={"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"}
+                      alt={authUser.name || "User Avatar"}
+                      className="w-full h-full object-cover"
+                    />
                 </div>
               </div>
-              
               {/* Name and Role Badge */}
               <div className="text-center md:text-left">
                 <h2 className="text-2xl font-bold">{authUser.name}</h2>
@@ -103,12 +103,11 @@ const Profile=()=>{
         
      
       </div>
-<div>
-
-      <ProfileSubmission/>
-      <ProblemSolvedByUser/>
-      <BookMarkProfile/>
-</div>
+      <div>
+        <ProfileSubmission/>
+        <ProblemSolvedByUser/>
+        <BookMarkProfile/>
+      </div>
       
       {/* PLaylist created by the user and their actions */}
     </div>

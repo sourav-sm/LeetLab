@@ -23,6 +23,7 @@ import { useExecutionStore } from "../store/useExecutionStore";
 import { useSubmissionStore } from "../store/useSubmissionStore";
 import Submission from "../components/Submission";
 import SubmissionsList from "../components/SubmissionList";
+import toast from 'react-hot-toast';
 
 
 const ProblemPage = () => {
@@ -76,7 +77,7 @@ const ProblemPage = () => {
     setSelectedLanguage(lang);
     setCode(problem.codeSnippets?.[lang] || "");
   };
-
+  
   const handleRunCode = (e) => {
     e.preventDefault();
     try {
@@ -86,6 +87,16 @@ const ProblemPage = () => {
       executeCode(code, language_id, stdin, expected_outputs, id);
     } catch (error) {
       console.log("Error executing code", error);
+    }
+  };
+  
+  const handleSubmitCode=()=>{
+    try {
+       setActiveTab("submissions"); // Switch to submissions tab
+    toast.success("Solution submitted successfully!");
+    } catch (error) {
+      toast.error("Error in Submission Solution")
+      console.log("Error in Submission Solution",error)
     }
   };
 
@@ -252,7 +263,7 @@ const ProblemPage = () => {
 
       <div className="container mx-auto p-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="card bg-base-100 shadow-xl">
+          <div className="card bg-base-100 shadow-xl w-full">
             <div className="card-body p-0">
               <div className="tabs tabs-bordered">
                 <button
@@ -337,7 +348,9 @@ const ProblemPage = () => {
                     {!isExecuting && <Play className="w-4 h-4" />}
                     Run Code
                   </button>
-                  <button className="btn btn-success gap-2">
+                  <button className="btn btn-success gap-2"
+                   onClick={handleSubmitCode}
+                  >
                     Submit Solution
                   </button>
                 </div>

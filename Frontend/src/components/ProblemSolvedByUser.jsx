@@ -45,7 +45,7 @@ const ProblemSolvedByUser = () => {
 
   return (
     <div className="p-4 bg-base-200 ">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <h2 className="text-2xl font-bold text-primary mb-6">Problems Solved</h2>
         
         {Array.isArray(solvedProblems) && solvedProblems.length === 0 ? (
