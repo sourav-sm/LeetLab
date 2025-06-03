@@ -36,10 +36,10 @@ const ProfileSubmission=()=>{
   };
 
   const toggleExpand = (id) => {
-    if (expandedSubmission === id) {
-      setExpandedSubmission(null);
+    if (expectedSubmission === id) {
+      setExpectedSubmission(null);
     } else {
-      setExpandedSubmission(id);
+      setExpectedSubmission(id);
     }
   };
 

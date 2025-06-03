@@ -78,17 +78,27 @@ const ProblemPage = () => {
     setCode(problem.codeSnippets?.[lang] || "");
   };
   
-  const handleRunCode = (e) => {
+
+  const [executionSuccess, setExecutionSuccess] = useState(false);
+
+  const handleRunCode = async (e) => {
     e.preventDefault();
     try {
       const language_id = getLanguageId(selectedLanguage);
       const stdin = problem.testcases.map((tc) => tc.input);
       const expected_outputs = problem.testcases.map((tc) => tc.output);
-      executeCode(code, language_id, stdin, expected_outputs, id);
+  
+      const response = await executeCode(code, language_id, stdin, expected_outputs, id);
+  
+      const isSuccess = response.status === 200; 
+      setExecutionSuccess(isSuccess);
+  
     } catch (error) {
-      console.log("Error executing code", error);
+      console.error("Error executing code", error);
+      setExecutionSuccess(false);
     }
   };
+
   
   const handleSubmitCode=()=>{
     try {
@@ -350,6 +360,7 @@ const ProblemPage = () => {
                   </button>
                   <button className="btn btn-success gap-2"
                    onClick={handleSubmitCode}
+                   disabled={!executionSuccess || isExecuting}
                   >
                     Submit Solution
                   </button>

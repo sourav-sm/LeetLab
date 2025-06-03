@@ -6,8 +6,10 @@ import {useActions} from "../store/useActions";
 import CreateBookmarkModal from "./CreateBookmarkModal";
 import { useBookmarkStore } from "../store/useBookMarkStore";
 import AddToBookmarkModel from "./AddToBookMark"
+import { useProblemStore } from '../store/useProblemStore';
 
 function ProblemTable({problems}) {
+    const {solvedProblems}=useProblemStore();
     const {authUser}=useAuthStore();
     const { onDeleteProblem } = useActions();
     const { createBookmark } = useBookmarkStore();
@@ -119,8 +121,11 @@ function ProblemTable({problems}) {
                 {
                     paginatedProblems.length>0?(
                     paginatedProblems.map((problem)=>{
-                        const isSolved = problem.userId === authUser?.id;
-                         
+                        const isSolved = solvedProblems.some(sp=>sp.id==problem.id)
+
+                            console.log("authUser.id:", authUser?.id);
+    console.log("problem.id:", problem.id);
+    console.log("solvedProblems:", solvedProblems);
                         return (
                             <tr key={problem.id}>
                                 <td>

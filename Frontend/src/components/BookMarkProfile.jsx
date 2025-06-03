@@ -104,7 +104,7 @@ const BookMarkProfile=()=>{
                   <p className="text-base-content/80 mt-1">{Bookmark.description}</p>
                   
                   {/* Expanded Problems List */}
-                  {expandedBookmark === Bookmark.id && (
+                  {/* {expandedBookmark === Bookmark.id && (
                     <div className="mt-4 pt-4 border-t border-base-300">
                       <h4 className="text-lg font-semibold mb-3">Problems in this Bookmark</h4>
                       
@@ -206,7 +206,65 @@ const BookMarkProfile=()=>{
                       
                       </div>
                     </div>
-                  )}
+                  )} */}
+                  {expandedBookmark === Bookmark.id && (
+  <div className="mt-4 pt-4 border-t border-base-300">
+    <h4 className="text-lg font-semibold mb-3">Problems in this Bookmark</h4>
+
+    {Bookmark.problems.length === 0 ? (
+      <div className="alert">
+        <span>No problems added to this Bookmark yet.</span>
+      </div>
+    ) : (
+      <div className="overflow-x-auto">
+        <table className="table table-zebra w-full">
+          <thead>
+            <tr>
+              <th>Problem</th>
+              <th>Difficulty</th>
+              <th>Tags</th>
+              <th className="text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Bookmark.problems.map((item) => (
+              <tr key={item.id} className="hover">
+                <td className="font-medium">{item.problem.title}</td>
+                <td>{getDifficultyBadge(item.problem.difficulty)}</td>
+                <td>
+                  <div className="flex flex-wrap gap-1">
+                    {item.problem.tags?.map((tag, idx) => (
+                      <div key={idx} className="badge badge-outline badge-sm">
+                        <Tag size={10} className="mr-1" />
+                        {tag}
+                      </div>
+                    ))}
+                  </div>
+                </td>
+                <td className="text-right">
+                  <Link 
+                    to={`/problem/${item.problem.id}`} 
+                    className="btn btn-xs btn-outline btn-primary"
+                  >
+                    <ExternalLink size={12} />
+                    Solve
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )}
+
+    <div className="flex justify-between items-center mt-4">
+      <button onClick={() => handleDelete(Bookmark.id)} className="btn btn-sm btn-error">
+        Delete Bookmark
+      </button>
+    </div>
+  </div>
+)}
+
                 </div>
               </div>
             ))}

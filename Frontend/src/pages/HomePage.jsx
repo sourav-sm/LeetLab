@@ -26,9 +26,7 @@ function HomePage() {
       </h1>
 
       <p className="mt-4 text-center text-lg font-semibold text-gray-500 dark:text-gray-400 z-10">
-        A Platform Inspired by Leetcode which helps you to prepare for coding
-        interviews and helps you to improve your coding skills by solving coding
-        problems
+       You’ve just taken the first step toward mastering coding interviews. Dive into handpicked problems, track your progress, and build the confidence to crack even the toughest technical rounds.
       </p>
 
        {/* {
