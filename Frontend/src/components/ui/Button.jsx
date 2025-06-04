@@ -1,7 +1,7 @@
 import {cn} from "../../lib/utils"
 
 const buttonVariants = {
-  default: "bg-primary text-primary-foreground hover:bg-primary/90",
+  default: "bg-blue-600 text-primary-foreground hover:bg-blue-800",
   destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
   outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
   secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
