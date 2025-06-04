@@ -66,10 +66,7 @@ function ProblemTable({problems}) {
   };
 
   return (
-     <div className="w-full max-w-6xl mx-auto mt-10">
-      {/* <div className='invisible'>
-        <ProblemSolvedByUser/>
-      </div> */}
+     <div className="w-full max-w-7xl mx-auto mt-10">
       {/* Header with Create Bookmark Button */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Problems</h2>
@@ -122,6 +119,7 @@ function ProblemTable({problems}) {
                     <th>Solved</th>
                     <th>Title</th>
                     <th>Tags</th>
+                    <th>Company</th>
                     <th>Difficulty</th>
                     <th>Actions</th>
                 </tr>
@@ -145,10 +143,20 @@ function ProblemTable({problems}) {
                             <div className='flex flex-wrap gap-1'>
                                 {(problem.tags || []).map((tag,idx)=>(
                                     <span key={idx} className='badge badge-outline badge-warning text-sm font-bold'>
-                                        {tag}
+                                        {tag},
                                     </span>
                                 ))}
                             </div>
+                        </td>
+                        <td>
+                          <div className='flex flex-wrap gap-1'>
+                            {(problem.companyTags || []).map((cmp,idx)=>(
+                              // <span key={idx} className='text-md font-bold bg-red-700 px-0.5 rounded-2xl text-black'>
+                              <span key={idx} className='text-md font-bold badge badge-primary'>
+                                 {cmp}
+                              </span>
+                            ))}
+                          </div>
                         </td>
                         <td>
                             <span
