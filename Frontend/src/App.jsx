@@ -22,13 +22,13 @@ const App=()=>{
     checkAuth()
   },[checkAuth])
 
-  // if(isCheckingAuth && !authUser){
-  //   return (
-  //     <div className="flex items-center justify-center h-screen">
-  //       <Loader className="size-10 animate-spin"/>
-  //     </div>
-  //   )
-  // }
+  if(isCheckingAuth && !authUser){
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Loader className="size-10 animate-spin"/>
+      </div>
+    )
+  }
 
   return (
     <div className="flex flex-col items-center justify-start">
@@ -60,26 +60,6 @@ const App=()=>{
             element={!authUser ? <SignUpPage /> : <Navigate to="/home" />}
           />
       </Routes>
-
-      {/* <Routes> */}
-        {/* {public routes} */}
-        {/* <Route path="/" element={!authUser ? <LandingPage/> : <Navigate to={"/home"}/>}/>
-        <Route path="/login" element={!authUser ? <LoginPage/> :<Navigate to={"/home"}/>}/>
-        <Route path="/signup" element={!authUser ? <SignUpPage/> : <Navigate to={"/home"}/>}/>
-       */}
-        {/* {protected routes} */}
-        {/* {authUser && (
-          <Route path="/" element={<Layout/>}>
-            <Route path="home" element={<HomePage/>}/>
-            <Route path="problem/:id" element={<ProblemPage/>}/>
-            <Route path="profile" element={<Profile/>}/>
-            <Route element={<AdminRoute/>}>
-              <Route path="add-problem" element={<AddProblem/>}/>
-            </Route>
-          </Route>
-        )}
-      
-      </Routes> */}
     </div>
   )
 }
