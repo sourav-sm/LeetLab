@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState,useEffect } from 'react'
 import { useAuthStore } from '../store/useAuthStore' 
 import { Link } from 'react-router-dom'
 import { Bookmark,PencilIcon,Trash,TrashIcon,Plug, Plus } from 'lucide-react';
@@ -9,7 +9,7 @@ import AddToBookmarkModel from "./AddToBookMark"
 import { useProblemStore } from '../store/useProblemStore';
 
 function ProblemTable({problems}) {
-    const {solvedProblems}=useProblemStore();
+  const { getSolvedProblemByUser,solvedProblems} = useProblemStore();
     const {authUser}=useAuthStore();
     const { onDeleteProblem } = useActions();
     const { createBookmark } = useBookmarkStore();
@@ -27,6 +27,12 @@ function ProblemTable({problems}) {
         problems.forEach((p)=>p.tags?.forEach((t)=>tagsSet.add(t)));
         return Array.from(tagsSet);
     },[problems])
+
+    //fetch all submission
+    useEffect(() => {
+        getSolvedProblemByUser();
+    }, [getSolvedProblemByUser]);
+    
     
     const filteredProblems=useMemo(()=>{
         return (problems || [])
@@ -39,7 +45,7 @@ function ProblemTable({problems}) {
     const totalPages=Math.ceil(filteredProblems.length/itemsPerPage);
     const paginatedProblems=useMemo(()=>{
         return filteredProblems.slice(
-            currentPage-1*itemsPerPage,
+            (currentPage-1)*itemsPerPage,
             currentPage*itemsPerPage)
     },[filteredProblems,currentPage]);
 
@@ -61,6 +67,9 @@ function ProblemTable({problems}) {
 
   return (
      <div className="w-full max-w-6xl mx-auto mt-10">
+      {/* <div className='invisible'>
+        <ProblemSolvedByUser/>
+      </div> */}
       {/* Header with Create Bookmark Button */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Problems</h2>
@@ -119,76 +128,71 @@ function ProblemTable({problems}) {
             </thead>
             <tbody>
                 {
-                    paginatedProblems.length>0?(
+                 paginatedProblems.length>0?(
                     paginatedProblems.map((problem)=>{
-                        const isSolved = solvedProblems.some(sp=>sp.id==problem.id)
-
-                            console.log("authUser.id:", authUser?.id);
-    console.log("problem.id:", problem.id);
-    console.log("solvedProblems:", solvedProblems);
-                        return (
-                            <tr key={problem.id}>
-                                <td>
-                                    <input type="checkbox" checked={isSolved} className='checkbox checkbox-sm'/>
-                                </td>
-                                <td>
-                                    <Link to={`/problem/${problem.id}`} className='font-semibold hover:underline'>
-                                        {problem.title}
-                                    </Link>
-                                </td>
-                                <td>
-                                    <div className='flex flex-wrap gap-1'>
-                                        {(problem.tags || []).map((tag,idx)=>(
-                                            <span key={idx} className='badge badge-outline badge-warning text-sm font-bold'>
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </td>
-                                <td>
-                                    <span
-                                    className={`badge font-semibold text-xs text-white 
-                                        ${
-                                            problem.difficulty==="EASY"?"badge-success":
-                                            problem.difficulty==="MEDIUM"?"badge-warning":
-                                            "badge-error"
-                                        }
-                                    `}>
-                                        {problem.difficulty}
+                const isSolved = solvedProblems.some(sp=>sp.id===problem.id)
+                return (
+                    <tr key={problem.id}>
+                        <td>
+                            <input type="checkbox" checked={isSolved} className='checkbox checkbox-sm'/>
+                        </td>
+                        <td>
+                            <Link to={`/problem/${problem.id}`} className='font-semibold hover:underline'>
+                                {problem.title}
+                            </Link>
+                        </td>
+                        <td>
+                            <div className='flex flex-wrap gap-1'>
+                                {(problem.tags || []).map((tag,idx)=>(
+                                    <span key={idx} className='badge badge-outline badge-warning text-sm font-bold'>
+                                        {tag}
                                     </span>
-                                </td>
-                                <td>
-                                    <div className='flex flex-col md:flex-row gap-2 items-start md:items-center'>
-                                        {
-                                            authUser?.role==="ADMIN" && (
-                                                <div className='flex gap-2'>
-                                                    <button onClick={() => handleDelete(problem.id)}
-                                                        className="btn btn-sm btn-error"
-                                                     >
-                                                        <TrashIcon className='w-4 h-4 text-white'/>
-                                                    </button>           
-                                                </div>
-                                            )}
-                                         <button className="btn btn-sm btn-outline flex gap-2 items-center"
-                                             onClick={() => handleAddToBookmark(problem.id)}
-                                        >
-                                                <Bookmark className="w-4 h-4" />
-                                            <span className="hidden sm:inline">Save to Bookmark</span>
-                                            </button>   
-                                    </div>
-                                </td>
-                            </tr>
-                        )
-
-                    })
-                ):(
-                        <tr>
-                            <td colSpan={5} className='text-center py-6 text-gray-500'>
-                                No Problems Found
-                            </td>
-                        </tr>
-                    )
-                }
+                                ))}
+                            </div>
+                        </td>
+                        <td>
+                            <span
+                            className={`badge font-semibold text-xs text-white 
+                                ${
+                                    problem.difficulty==="EASY"?"badge-success":
+                                    problem.difficulty==="MEDIUM"?"badge-warning":
+                                    "badge-error"
+                                }
+                            `}>
+                                {problem.difficulty}
+                            </span>
+                        </td>
+                        <td>
+                            <div className='flex flex-col md:flex-row gap-2 items-start md:items-center'>
+                                {
+                                    authUser?.role==="ADMIN" && (
+                                        <div className='flex gap-2'>
+                                            <button onClick={() => handleDelete(problem.id)}
+                                                className="btn btn-sm btn-error"
+                                             >
+                                                <TrashIcon className='w-4 h-4 text-white'/>
+                                            </button>           
+                                        </div>
+                                    )}
+                                 <button className="btn btn-sm btn-outline flex gap-2 items-center"
+                                     onClick={() => handleAddToBookmark(problem.id)}
+                                >
+                                <Bookmark className="w-4 h-4" />
+                                <span className="hidden sm:inline">Save to Bookmark</span>
+                                </button>   
+                            </div>
+                        </td>
+                    </tr>
+                )
+              })
+              ):(
+                  <tr>
+                      <td colSpan={5} className='text-center py-6 text-gray-500'>
+                          No Problems Found
+                      </td>
+                  </tr>
+                  )
+              }
             </tbody>
         </table>  
       </div>

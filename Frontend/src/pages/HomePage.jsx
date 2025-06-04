@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { Loader } from 'lucide-react'
-import { useProblemStore } from '../store/useProblemStore';
+import { useProblemStore} from '../store/useProblemStore';
 import ProblemTable from '../components/ProblemTable';
 
 function HomePage() {
   const {getAllProblems,problems,isProblemsLoading}=useProblemStore();
+  console.log("problems",problems)
 
   useEffect(()=>{
     getAllProblems();
@@ -29,14 +30,13 @@ function HomePage() {
        You’ve just taken the first step toward mastering coding interviews. Dive into handpicked problems, track your progress, and build the confidence to crack even the toughest technical rounds.
       </p>
 
-       {/* {
+       {
         problems.length > 0 ? <ProblemTable problems={problems}/> : (
             <p className="mt-10 text-center text-lg font-semibold text-gray-500 dark:text-gray-400 z-10 border border-primary px-4 py-2 rounded-md border-dashed">
           No problems found
         </p>
         )
-      }  */}
-       <ProblemTable problems={problems}/> 
+      } 
     </div>
   );
 }
