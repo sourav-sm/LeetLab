@@ -43,6 +43,14 @@ function ProblemTable({problems}) {
 
     const itemsPerPage=5;
     const totalPages=Math.ceil(filteredProblems.length/itemsPerPage);
+    
+    useEffect(() => {
+  // if currentPage is greater than totalPages, reset it to last page or 1 if no pages
+  if (currentPage > totalPages) {
+    setCurrentPage(totalPages === 0 ? 1 : totalPages);
+  }
+}, [currentPage, totalPages]);
+    
     const paginatedProblems=useMemo(()=>{
         return filteredProblems.slice(
             (currentPage-1)*itemsPerPage,
