@@ -1,6 +1,7 @@
 import React ,{useState,useEffect,useRef}from 'react'
 import { Link,useParams } from 'react-router-dom'
 import { Editor } from '@monaco-editor/react';
+import { Check, RotateCw } from "lucide-react"
 import {
   Play,
   FileText,
@@ -29,6 +30,8 @@ import toast from 'react-hot-toast';
 const ProblemPage = () => {
   const { id } = useParams();
   const { getProblemById, problem, isProblemLoading } = useProblemStore();
+  const [activeCase, setActiveCase] = useState(0)
+  const [isRefreshing, setIsRefreshing] = useState(false)
 
   const {
     submission: submissions,
@@ -122,6 +125,7 @@ const ProblemPage = () => {
   }
 
   const renderTabContent = () => {
+    
     switch (activeTab) {
       case "description":
         return (
@@ -218,7 +222,7 @@ const ProblemPage = () => {
 
   return (
      <div className="min-h-screen bg-gradient-to-br from-base-300 to-base-200 max-w-7xl w-full">
-      <nav className="navbar bg-base-100 shadow-lg px-4">
+      <nav className="navbar bg-base-100 shadow-lg px-1">
         <div className="flex-1 gap-2">
           <Link to={"/"} className="flex items-center gap-2 text-primary">
             <Home className="w-6 h-6" />
@@ -271,8 +275,8 @@ const ProblemPage = () => {
         </div>
       </nav>
 
-      <div className="container mx-auto p-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="container mx-auto border-t">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="card bg-base-100 shadow-xl w-full">
             <div className="card-body p-0">
               <div className="tabs tabs-bordered">
@@ -317,8 +321,9 @@ const ProblemPage = () => {
               <div className="p-6">{renderTabContent()}</div>
             </div>
           </div>
-
-          <div className="card bg-base-100 shadow-2xl">
+          
+          <div>
+            <div className="card bg-base-100 shadow-2xl">
             <div className="card-body p-0">
               <div className="tabs tabs-bordered">
                 <button className="tab tab-active gap-2">
@@ -327,7 +332,7 @@ const ProblemPage = () => {
                 </button>
               </div>
           
-              <div className="h-[600px] w-full">
+              <div className="h-[400px] w-full">
                 <Editor
                   height="100%"
                   language={selectedLanguage.toLowerCase()}
@@ -368,16 +373,16 @@ const ProblemPage = () => {
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="card bg-base-100 shadow-xl mt-6">
+          <div className="card bg-base-100 shadow-xl">
           <div className="card-body">
             {submission ? (
               <Submission submission={submission} />
             ) : (
               <>
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-xl font-bold">Test Cases</h3>
+                <div className="flex items-center gap-2">
+                 <Check className="h-5 w-5 text-green-500" />
+                 <span className="font-medium">Test Case</span>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="table table-zebra w-full">
@@ -401,6 +406,11 @@ const ProblemPage = () => {
             )}
           </div>
         </div>
+          </div>
+          
+        </div>
+
+        
       </div>
     </div>
   );
