@@ -22,7 +22,7 @@ export const register=async (req,res)=>{
             })
         }
 
-        //create a new user
+        //hashing password
         const hashedPassword=await bcrypt.hash(password,10);
 
         const newUser=await db.user.create({
@@ -39,10 +39,11 @@ export const register=async (req,res)=>{
         })
 
         res.cookie("jwt",token,{
-            httpsOnly:true,
+            httpOnly:true,
             // sameSite:"strict",
             sameSite:"None",//as frontend on vercel and backend on render
-            secure:process.env.NODE_ENV!="development",
+            // secure:process.env.NODE_ENV!="development",
+            secure:true,
             maxAge:1000*60*60*24*7//7 days
         })
 
@@ -94,10 +95,11 @@ export const login=async (req,res)=>{
         })
 
         res.cookie("jwt",token,{
-            httpsOnly:true,
+            httpOnly:true,
             // sameSite:"strict",
             sameSite:"None",//as frontend on vercel and backend on render
-            secure:process.env.NODE_ENV!="development",
+            // secure:process.env.NODE_ENV!="development",
+            secure:true,
             maxAge:7*24*60*60*1000//7days
         })
 
