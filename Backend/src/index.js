@@ -13,11 +13,12 @@ const app=express();
 dotenv.config();
 const port=process.env.PORT;
 
-app.use(cors({
-    // origin:"http://localhost:5173",
-    origin:"https://www.algopundit.com",
+const corsOptions={
+    origin:["http://localhost:5173","https://www.algopundit.com"],
     credentials:true
-}))
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
