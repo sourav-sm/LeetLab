@@ -7,6 +7,7 @@ import CreateBookmarkModal from "./CreateBookmarkModal";
 import { useBookmarkStore } from "../store/useBookMarkStore";
 import AddToBookmarkModel from "./AddToBookMark"
 import { useProblemStore } from '../store/useProblemStore';
+import { CiSearch } from "react-icons/ci";
 
 function ProblemTable({problems}) {
   const { getSolvedProblemByUser,solvedProblems} = useProblemStore();
@@ -79,7 +80,7 @@ function ProblemTable({problems}) {
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Problems</h2>
         <button
-          className="btn btn-primary gap-2"
+          className="btn btn-primary gap-2 bg-blue-800"
           onClick={() => setIsCreateModalOpen(true)}
         >
           <Plus className="w-4 h-4" />
@@ -87,14 +88,18 @@ function ProblemTable({problems}) {
         </button>
       </div>
 
-        <div className="flex flex-wrap justify-between items-center mb-6 gap-4">
-        <input
-          type="text"
-          placeholder="Search by title"
-          className="input input-bordered w-full md:w-1/3 bg-base-200"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+       <div className="flex flex-wrap p-5 bg-gray-900/50 border-gray-800 rounded-2xl justify-between items-center mb-6 gap-4">
+  <div className="relative w-full md:w-1/3">
+  <CiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"/>
+    <input
+      type="text"
+      placeholder="Search by title"
+      className="input input-bordered w-full pl-10 bg-base-200"
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+    />
+</div>
+
         <select
           className="select select-bordered bg-base-200"
           value={difficulty}
@@ -121,8 +126,8 @@ function ProblemTable({problems}) {
         </select>
       </div>
       <div className='overflow-x-auto rounded-xl shadow-md'>
-        <table className='table table-zebra table-lg bg-base-200 text-base-content'>
-            <thead className='bg-base-200'>
+        <table className='table table-zebra table-lg text-base-content bg-gray-900/50 border-gray-800'>
+            <thead className='bg-gray-900/50 border-gray-800'>
                 <tr>
                     <th>Solved</th>
                     <th>Title</th>

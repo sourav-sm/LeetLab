@@ -5,7 +5,7 @@
     return (
       <div className="min-h-screen max-w-screen w-full bg-black">
         <Navbar />
-        <main className="max-w-7xl mx-auto w-full"> 
+        <main className="w-full flex justify-center"> 
           <Outlet />
         </main>
       </div>

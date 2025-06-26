@@ -2,6 +2,7 @@ import React ,{useState,useEffect,useRef}from 'react'
 import { Link,useParams } from 'react-router-dom'
 import { Editor } from '@monaco-editor/react';
 import { Check, RotateCw } from "lucide-react"
+import { FaCode } from "react-icons/fa6";
 import {
   Play,
   FileText,
@@ -46,6 +47,7 @@ const ProblemPage = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("JAVASCRIPT");
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [testcases, setTestCases] = useState([]);
+  const [editorTheme,setEditorTheme]=useState('hc-black');
 
   const { executeCode, submission, isExecuting } = useExecutionStore();
 
@@ -130,6 +132,8 @@ const ProblemPage = () => {
       case "description":
         return (
           <div className="prose max-w-none ">
+            <h1 className="text-2xl font-extrabold">{problem.title}</h1>
+           
             <p className="text-lg mb-6">{problem.description}</p>
 
             {problem.examples && (
@@ -141,24 +145,24 @@ const ProblemPage = () => {
                       key={lang}
                       className="bg-base-200 p-6 rounded-xl mb-6 font-mono"
                     >
-                      <div className="mb-4">
-                        <div className="text-indigo-300 mb-2 text-base font-semibold">
+                      <div className="mb-4 flex align-middle">
+                        <div className="text-indigo-300 mb-2 text-lg font-semibold">
                           Input:
                         </div>
-                        <span className="bg-black/90 px-4 py-1 rounded-lg font-semibold text-white">
+                        <span className="px-4 py-1 rounded-lg font-semibold text-white">
                           {example.input}
                         </span>
                       </div>
-                      <div className="mb-4">
-                        <div className="text-indigo-300 mb-2 text-base font-semibold">
+                      <div className="mb-4 flex">
+                        <div className="text-indigo-300 mb-2 text-lg font-semibold">
                           Output:
                         </div>
-                        <span className="bg-black/90 px-4 py-1 rounded-lg font-semibold text-white">
+                        <span className="px-4 py-1 rounded-lg font-semibold text-white">
                           {example.output}
                         </span>
                       </div>
                       {example.explanation && (
-                        <div>
+                        <div className='flex gap-3'>
                           <div className="text-emerald-300 mb-2 text-base font-semibold">
                             Explanation:
                           </div>
@@ -221,16 +225,16 @@ const ProblemPage = () => {
   };
 
   return (
-     <div className="min-h-screen bg-gradient-to-br from-base-300 to-base-200 max-w-7xl w-full">
-      <nav className="navbar bg-base-100 shadow-lg px-1">
+     <div className="min-h-screen  w-full">
+      <nav className="navbar bg-black shadow-lg px-1 border-t-2 border-blue-600">
         <div className="flex-1 gap-2">
           <Link to={"/"} className="flex items-center gap-2 text-primary">
             <Home className="w-6 h-6" />
             <ChevronRight className="w-4 h-4" />
           </Link>
           <div className="mt-2">
-            <h1 className="text-xl font-bold">{problem.title}</h1>
-            <div className="flex items-center gap-2 text-sm text-base-content/70 mt-5">
+            {/* <h1 className="text-2xl font-extrabold">{problem.title}</h1> */}
+            {/* <div className="flex items-center gap-2 text-sm text-base-content/70 mt-5">
               <Clock className="w-4 h-4" />
               <span>
                 Updated{" "}
@@ -246,7 +250,7 @@ const ProblemPage = () => {
               <span className="text-base-content/30">•</span>
               <ThumbsUp className="w-4 h-4" />
               <span>95% Success Rate</span>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="flex-none gap-4">
@@ -275,14 +279,14 @@ const ProblemPage = () => {
         </div>
       </nav>
 
-      <div className="container mx-auto border-t">
+      <div className="container mx-auto border-t border-gray-600 ">
         <div className="grid grid-cols-1 lg:grid-cols-2">
-          <div className="card bg-base-100 shadow-xl w-full">
+          <div className="card bg-black shadow-xl w-full">
             <div className="card-body p-0">
               <div className="tabs tabs-bordered">
                 <button
                   className={`tab gap-2 ${
-                    activeTab === "description" ? "tab-active" : ""
+                    activeTab === "description" ? "tab-active bg-gray-900 rounded-2xl text-white" : ""
                   }`}
                   onClick={() => setActiveTab("description")}
                 >
@@ -291,7 +295,7 @@ const ProblemPage = () => {
                 </button>
                 <button
                   className={`tab gap-2 ${
-                    activeTab === "submissions" ? "tab-active" : ""
+                    activeTab === "submissions" ? "tab-active bg-gray-900 rounded-2xl text-white" : ""
                   }`}
                   onClick={() => setActiveTab("submissions")}
                 >
@@ -300,7 +304,7 @@ const ProblemPage = () => {
                 </button>
                 <button
                   className={`tab gap-2 ${
-                    activeTab === "discussion" ? "tab-active" : ""
+                    activeTab === "discussion" ? "tab-active bg-gray-900 rounded-2xl text-white" : ""
                   }`}
                   onClick={() => setActiveTab("discussion")}
                 >
@@ -309,7 +313,7 @@ const ProblemPage = () => {
                 </button>
                 <button
                   className={`tab gap-2 ${
-                    activeTab === "hints" ? "tab-active" : ""
+                    activeTab === "hints" ? "tab-active bg-gray-900 rounded-2xl text-white" : ""
                   }`}
                   onClick={() => setActiveTab("hints")}
                 >
@@ -325,23 +329,36 @@ const ProblemPage = () => {
           <div>
             <div className="card bg-base-100 shadow-2xl">
             <div className="card-body p-0">
-              <div className="tabs tabs-bordered">
+              <div className="tabs tabs-bordered flex justify-between">
                 <button className="tab tab-active gap-2">
-                  <Terminal className="w-4 h-4" />
+                  <FaCode className="w-4 h-4 text-green-500" />
                   Code Editor
                 </button>
+                <div className='flex items-center gap-2 mr-2'>
+                  <span>Change Theme</span>
+                  <select className="bg-black border border-gray-700 text-white px-2 py-1 rounded"
+                    value={editorTheme}
+                    onChange={(e)=>setEditorTheme(e.target.value)}
+                  >
+                    <option value="vs">Light</option>
+                    <option value="vs-dark">VS-Dark</option>
+                    <option value="hc-light">hc-light</option>
+                    <option value="hc-black">hc-dark</option>
+                  </select>
+                </div>
               </div>
           
               <div className="h-[400px] w-full">
                 <Editor
                   height="100%"
                   language={selectedLanguage.toLowerCase()}
-                  theme="vs-dark"
+                  theme={editorTheme}
+                  //other theme options "vs","vs-dark","hc-light"
                   value={code}
                   onChange={(value) => setCode(value || "")}
                   options={{
                     minimap: { enabled: false },
-                    fontSize: 20,
+                    fontSize: 15,
                     lineNumbers: "on",
                     roundedSelection: false,
                     scrollBeyondLastLine: false,
