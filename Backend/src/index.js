@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.get("/",(req,res)=>{
-    res.send("Hello Guys, welcome to LeetLab🔥🔥");
+    res.send("Hello Guys, welcome to AlgoPundit🔥🔥");
 })
 
 app.use("/api/v1/auth",authRoutes);
